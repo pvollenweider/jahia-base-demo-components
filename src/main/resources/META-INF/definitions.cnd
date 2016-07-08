@@ -33,7 +33,7 @@
  itemtype = content
  - layout (string, choicelist[resourceBundle]) = 'Wide' autocreated < 'Boxed', 'Wide'
  - colorTheme (string, choicelist[resourceBundle]) = 'Light' autocreated < 'Dark', 'Light'
-
+  
 [jdmix:headerWidgets] mixin
 
 [jdmix:footerWidgets] mixin
