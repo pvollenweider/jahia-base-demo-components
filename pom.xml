@@ -79,7 +79,7 @@
     <version>7.1.2.0</version>
   </parent>
   <artifactId>dx-base-demo-components</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.5-SNASPSHOT</version>
   <packaging>bundle</packaging>
   <name>DX Base Demo Components</name>
   <description>This is the custom profile module (jahiademo) for running on a Digital Factory server.</description>
