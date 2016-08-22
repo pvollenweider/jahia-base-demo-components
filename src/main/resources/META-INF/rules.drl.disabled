@@ -1,4 +1,4 @@
-package org.jahia.modules.jahiademo.rules
+package org.jahia.modules.dxbasedemocomponents.rules
 
 // list any import classes here.
 import org.jahia.services.content.rules.*
