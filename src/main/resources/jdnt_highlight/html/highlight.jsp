@@ -21,7 +21,8 @@
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="description" value="${currentNode.properties['description'].string}"/>
 <c:set var="icon" value="${currentNode.properties['faIcon'].string}"/>
-<c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink')}">
+<c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink') and not empty currentNode.properties['internalLink']
+and not empty currentNode.properties['internalLink'].node}">
     <c:url var="linkUrl" value="${currentNode.properties['internalLink'].node.url}" context="/"/>
 </c:if>
 
