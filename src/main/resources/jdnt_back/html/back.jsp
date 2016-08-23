@@ -23,5 +23,5 @@
 <c:set var="parentUrl">javascript:history.back()</c:set>
 <p>
     <a href="${parentUrl}" class="button button-mini button-border button-rounded"><span><i
-            class="icon-line-arrow-left"></i><fmt:message key="jdnt_news.back"/></span></a>
+            class="icon-line-arrow-left"></i><fmt:message key="jdnt_back.back"/></span></a>
 </p>
