@@ -124,6 +124,11 @@
  - linkTitle (string) internationalized
  - internalLink (weakreference, picker[type='editoriallink']) < jmix:droppableContent, jnt:page, jnt:contentFolder, jnt:folder
 
+[jdmix:topStoriesLink] mixin
+ extends = jnt:topStories
+  - linkTitle (string) internationalized
+  - internalLink (weakreference, picker) < jdnt:allStories
+
 [jdmix:searchArea] mixin
  extends = jnt:topStories
  itemtype = content
