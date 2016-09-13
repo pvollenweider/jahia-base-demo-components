@@ -18,6 +18,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%-- display the search results for the allStories query --%>
+<template:addResources type="javascript" resources="custom/jahiademo-custom.js"/>
 <template:addResources type="javascript" resources="custom/allStories.js"/>
 <template:include view="hidden.header"/>
 <c:if test="${currentNode.properties.disableAjax.boolean}">
