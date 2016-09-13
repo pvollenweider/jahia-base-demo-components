@@ -23,7 +23,7 @@
 <template:addResources type="javascript" resources="masterslider/jquery.easing.min.js"/>
 <template:addResources type="javascript" resources="master-slider-fw.js"/>
 <template:addResources type="javascript" resources="custom/slider.js"/>
-<%-- TODO: update list processing --%>
+
 <c:set var="uuid" value="${currentNode.identifier}"/>
 <c:set var="id" value="${fn:replace(uuid,'-', '')}"/>
 <c:set var="transition" value="${currentNode.properties.transition.string}"/>
