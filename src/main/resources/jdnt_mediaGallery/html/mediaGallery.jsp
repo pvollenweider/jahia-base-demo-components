@@ -30,6 +30,7 @@ In the folder of skin CSS file there are also:
 <template:addResources type="javascript" resources="plugins/photoswipe/photoswipe.min.js"/>
 <!-- UI JS file -->
 <template:addResources type="javascript" resources="plugins/photoswipe/photoswipe-ui-default.min.js"/>
+<template:addResources type="javascript" resources="custom/photoSwipeSetup.js"/>
 <template:addResources type="javascript" resources="custom/photoSwipeInit.js"/>
 <template:addResources type="javascript" resources="custom/photoGallery.js"/>
 

@@ -13,6 +13,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+    photoSwipeSetup();
     /* Masonry highlight overlay view ANIMATION*/
     $(".grid-item-overlay").mouseenter(function() {
             $(this).find(".caption-items").show();
