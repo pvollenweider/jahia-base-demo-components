@@ -21,5 +21,5 @@
 <%--
 === This is an empty view on purpose ===
 This view will be called when the hasPeople jmix is not enabled in content item to avoid
-the content item default view being called resulting on th eduplication of th emain resource view on the page.
+the content item default view being called resulting on the duplication of the main resource view on the page.
  --%>
