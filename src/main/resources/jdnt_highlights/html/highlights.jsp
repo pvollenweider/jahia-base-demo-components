@@ -96,17 +96,7 @@
 <c:if test="${((isTileView) and ( not renderContext.editMode))}">
         <template:addResources type="css" resources="masonry.css"/>
         <template:addResources type="javascript" resources="jquery.tile.js"/>
-        <template:addResources>
-            <script>
-                $(function() {
-                    $('#card-tiles').justifiedGallery({
-                        rowHeight : 225,
-                        maxrowHeight: 100,
-                        margins : 30
-                    });
-                });
-            </script>
-        </template:addResources>
+        <template:addResources type="javascript" resources="custom/highlightsTile.js"/>
 
     <c:set var="isEmpty" value="true"/>
     <div id="card-tiles" >

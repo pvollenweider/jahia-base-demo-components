@@ -22,16 +22,6 @@
 <c:if test="${not renderContext.editMode}">
     <template:addResources type="css" resources="jahiademo-components.css"/>
     <template:addResources type="javascript" resources="custom/highlightCardFlip.js"/>
-    <%-- <template:addResources>
-       <script>
-            $(document).ready(function() {
-                //when the card is clicked, this will add the flip effect using a class.
-                $(".flip-container").click(function() {
-                    $(this).toggleClass("flip");
-                });
-            });
-        </script>
-    </template:addResources> --%>
 </c:if>
 
 <template:include view="hidden.cards-flip"/>
