@@ -111,14 +111,13 @@
 
 .pswp__zoom-wrap {
     text-align: center;
+}
 
-:before {
+.pswp__zoom-wrap  ::before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle;
-}
-
 }
 
 .pswp__bg {
@@ -218,8 +217,9 @@
     padding-top: 25px;
     height: 0;
     width: 100%;
+}
 
-    iframe {
+.pswp__video-wrapper    iframe {
         position: absolute;
         top: 0;
         left: 0;
@@ -227,7 +227,6 @@
         height: 100%;
     }
 
-}
 .pswp__video {
     width: 100% !important;
     height: auto !important;
