@@ -30,6 +30,9 @@
 
 <%-- If a color theme was not selected use light --%>
 <c:if test="${empty textColor}"><c:set var="textColor" value="light"/></c:if>
+<c:if test="${textColor eq 'dark'}">
+    <c:set var="textColorClass" value="color-dark"/>
+</c:if>
 
 <%-- if linkText is not filled in use default Read More from resource file--%>
 <c:if test="${empty linkText}">
@@ -59,14 +62,7 @@
     <div class="edit-slider-cont${textLayout}">
 
         <c:if test="${not empty subtitle}">
-            <c:choose>
-                <c:when test="${textColor eq 'dark'}">
-                    <div class="first-layer-editslider color-dark">${subtitle}</div>
-                </c:when>
-                <c:otherwise>
-                    <div class="first-layer-editslider">${subtitle}</div>
-                </c:otherwise>
-            </c:choose>
+            <div class="first-layer-editslider ${textColorClass}">${subtitle}</div>
         </c:if>
         <c:if test="${not empty title}">
             <div class="second-layer-editslider">
@@ -75,14 +71,7 @@
         </c:if>
 
         <c:if test="${not empty summary}">
-            <c:choose>
-                <c:when test="${textColor eq 'dark'}">
-                    <div class="text-layer-editslider color-dark">${summary}</div>
-                </c:when>
-                <c:otherwise>
-                    <div class="text-layer-editslider">${summary}</div>
-                </c:otherwise>
-            </c:choose>
+            <div class="text-layer-editslider ${textColorClass}">${summary}</div>
         </c:if>
 
         <c:if test="${not empty link}">
