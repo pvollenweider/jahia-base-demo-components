@@ -27,14 +27,6 @@
 <jcr:nodeProperty node="${currentNode}" name="j:town" var="town"/>
 <jcr:nodeProperty node="${currentNode}" name="j:country" var="country"/>
 
-<%-- if social icons were included, get the urls --%>
-<c:if test="${jcr:isNodeType(currentNode, 'jdmix:socialIcons')}">
-    <c:set var="facebook" value="${currentNode.properties.facebook.string}"/>
-    <c:set var="linkedin" value="${currentNode.properties.linkedIn.string}"/>
-    <c:set var="twitter" value="${currentNode.properties.twitter.string}"/>
-    <c:set var="googlePlus" value="${currentNode.properties.googlePlus.string}"/>
-</c:if>
-
 <%-- display the headline title, get wording from resource files --%>
 <div class="headline"><h2><fmt:message key="jdnt_company.headlineTitle"/></h2></div>
 <ul class="list-unstyled who">
@@ -55,18 +47,7 @@
     </c:if>
 </ul>
 
-<!-- Company Social Icons -->
-<ul class="list-inline who margin-bottom-30">
-    <c:if test="${not empty facebook and facebook != 'http://'}">
-        <li><a href="${facebook}"><i class="fa fa-facebook-official"></i></a></li>
-    </c:if>
-    <c:if test="${not empty twitter and twitter != 'http://'}">
-        <li><a href="${twitter}"><i class="fa fa-twitter-square"></i></a></li>
-    </c:if>
-    <c:if test="${not empty googlePlus and googlePlus != 'http://'}">
-        <li><a href="${googlePlus}"><i class="fa fa-google-plus-square"></i></a></li>
-    </c:if>
-    <c:if test="${not empty linkedin and linkedin != 'http://'}">
-        <li><a href="${linkedin}"><i class="fa fa-linkedin-square"></i></a></li>
-    </c:if>
-</ul>
+<%-- If social icons have been added use mixin view to display --%>
+<c:if test="${jcr:isNodeType(currentNode, 'jdmix:socialIcons')}">
+    <template:include view="hidden.company"/>
+</c:if>
