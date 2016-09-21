@@ -17,6 +17,11 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
+<c:if test="${not renderContext.editMode}">
+    <!-- JS Page Level -->
+    <template:addResources type="javascript" resources="plugins/cube-portfolio/jquery.cubeportfolio.js"/>
+    <template:addResources type="javascript" resources="plugins/cube-portfolio/cube-portfolio-3.js"/>
+</c:if>
 
 <%-- Get the title of the companies list, if exists display above list --%>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
@@ -100,11 +105,6 @@
                 <%--/end Agency Grid Container--%>
         </div>
         <%--/end Cube-Portfolio Container--%>
-        <c:if test="${not renderContext.editMode}">
-            <!-- JS Page Level -->
-            <template:addResources type="javascript" resources="plugins/cube-portfolio/jquery.cubeportfolio.js"/>
-            <template:addResources type="javascript" resources="plugins/cube-portfolio/cube-portfolio-3.js"/>
-        </c:if>
 
         <template:include view="hidden.footer"/>
     </c:otherwise>

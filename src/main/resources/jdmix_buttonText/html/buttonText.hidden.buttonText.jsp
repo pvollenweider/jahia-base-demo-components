@@ -22,6 +22,6 @@
 <c:set var="buttonTxt" value="${currentNode.properties['buttonTxt'].string}"/>
 
 <c:if test="${empty buttonTxt}">
-    <c:set var="buttonTxt" value="Read More"/>
+   <fmt:message key="jdmix_buttonText.readmore"/>
 </c:if>
 ${buttonTxt}

@@ -20,7 +20,7 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
     <c:if test="${renderContext.editMode}">
-        Loaded with AJAX call - Content will load here
+        <fmt:message key="jdnt_infiniteScrollerLoader.content_load_here"/>
     </c:if>
     <c:if test="${not renderContext.editMode}">
         <!-- Content will load and then will be appended to this div  -->
