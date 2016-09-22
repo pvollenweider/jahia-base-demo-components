@@ -12,18 +12,19 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<c:set var="image" value="${currentNode.properties['image']}"/>
+<c:set var="image" value="${currentNode.properties['image'].node}"/>
+<template:addCacheDependency node="${image}"/>
 <c:set var="caption" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="itemWidth" value="${currentNode.parent.properties['itemWidth'].string}"/>
 <c:choose>
     <c:when test="${renderContext.editMode}">
-        <img src="${image.node.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
+        <img src="${image.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
         <br>
     </c:when>
     <c:otherwise>
-        <a href="${image.node.url}" itemprop="contentUrl"
-           data-size="${image.node.properties['j:width'].string}x${image.node.properties['j:height'].string}">
-            <img src="${image.node.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
+        <a href="${image.url}" itemprop="contentUrl"
+           data-size="${image.properties['j:width'].string}x${image.properties['j:height'].string}">
+            <img src="${image.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
             <br>
         </a>
     </c:otherwise>
