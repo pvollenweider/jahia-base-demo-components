@@ -38,9 +38,9 @@
 </c:choose>
 
 <%-- check if the link property has been used on this content --%>
-<c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink')}">
-    <c:url var="linkUrl" value="${currentNode.properties['internalLink'].node.url}" context="/"/>
-    <template:addCacheDependency node="${currentNode.properties['internalLink'].node}"/>
+<c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink') and not empty currentNode.properties['internalLink']
+and not empty currentNode.properties['internalLink'].node}">
+    <c:set var="linkNode" value="${currentNode.properties['internalLink'].node}" />
 </c:if>
 
 <div class="masonry-overlay grid-item  thumbnails grid-item-overlay thumbnail-style thumbnail-kenburn">
@@ -50,16 +50,16 @@
                 <div class="caption-items">
                             <ul class="link-captions no-bottom-space">
                         <c:choose>
-                            <c:when test="${not empty linkUrl}">
-                                <h3><a class="hover-effect" href="${linkUrl}">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
+                            <c:when test="${not empty linkNode}">
+                                <h3><a class="hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
                             </c:when>
                             <c:otherwise>
                                 <h4>${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</h4>
                             </c:otherwise>
                         </c:choose>
                         <p>${fn:replace(description, fn:substring(description, 30, fn:length(description)), ' ...')}</p>
-                        <c:if test="${not empty linkUrl}">
-                        <li><a href="${linkUrl}"><i class="rounded-x fa fa-link"></i></a></li>
+                        <c:if test="${not empty linkNode}">
+                        <li><a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>"><i class="rounded-x fa fa-link"></i></a></li>
                         </c:if>
                         <li><a href="${imageUrl}" class="msn-lightbox" data-title="${title}"><i
                                 class="rounded-x fa fa-search"></i></a></li>
@@ -77,8 +77,8 @@
         <c:if test="${renderContext.editMode}">
             <div class="caption-items">
                     <c:choose>
-                        <c:when test="${not empty linkUrl}">
-                            <h3><a class="hover-effect" href="${linkUrl}">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
+                        <c:when test="${not empty linkNode}">
+                            <h3><a class="hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
                         </c:when>
                         <c:otherwise>
                             <h3>${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</h3>
@@ -86,8 +86,8 @@
                     </c:choose>
                     <p>${fn:replace(description, fn:substring(description, 30, fn:length(description)), ' ...')}</p>
                     <%-- only display the read more text if a link has been provided --%>
-                    <c:if test="${not empty linkUrl}">
-                        <a class="btn-more-2 hover-effect" href="${linkUrl}" alt="${title}">
+                    <c:if test="${not empty linkNode}">
+                        <a class="btn-more-2 hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>" alt="${title}">
                             <c:choose>
                                 <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                                     <template:include view="hidden.buttonText"/>

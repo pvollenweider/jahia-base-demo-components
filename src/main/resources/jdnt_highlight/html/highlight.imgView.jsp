@@ -35,8 +35,7 @@
 <%-- check if the link property has been used on this content --%>
 <c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink') and not empty currentNode.properties['internalLink']
 and not empty currentNode.properties['internalLink'].node}">
-    <c:url var="linkUrl" value="${currentNode.properties['internalLink'].node.url}" context="/"/>
-    <template:addCacheDependency node="${currentNode.properties['internalLink'].node}"/>
+    <c:set var="linkNode" value="${currentNode.properties['internalLink'].node}"/>
 </c:if>
 
 <div class="thumbnails thumbnail-style thumbnail-kenburn">
@@ -45,8 +44,8 @@ and not empty currentNode.properties['internalLink'].node}">
             <img class="img-responsive" src="${imageUrl}" alt="">
         </div>
         <%-- only display the read more text if a link has been provided --%>
-        <c:if test="${not empty linkUrl}">
-            <a class="btn-more hover-effect" href="${linkUrl}" alt="${title}">
+        <c:if test="${not empty linkNode}">
+            <a class="btn-more hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>" alt="${title}">
                 <c:choose>
                     <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                         <template:include view="hidden.buttonText"/>
@@ -60,8 +59,8 @@ and not empty currentNode.properties['internalLink'].node}">
     </div>
     <div class="caption">
         <c:choose>
-            <c:when test="${not empty linkUrl}">
-                <h3><a class="hover-effect" href="${linkUrl}">${title}</a></h3>
+            <c:when test="${not empty linkNode}">
+                <h3><a class="hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>">${title}</a></h3>
             </c:when>
             <c:otherwise>
                 <h3><a class="hover-effect" href="#">${title}</a></h3>

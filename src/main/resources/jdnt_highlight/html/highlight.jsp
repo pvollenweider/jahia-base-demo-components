@@ -23,14 +23,14 @@
 <c:set var="icon" value="${currentNode.properties['faIcon'].string}"/>
 <c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink') and not empty currentNode.properties['internalLink']
 and not empty currentNode.properties['internalLink'].node}">
-    <c:url var="linkUrl" value="${currentNode.properties['internalLink'].node.url}" context="/"/>
+    <c:set var="linkNode" value="${currentNode.properties['internalLink'].node}" />
 </c:if>
 
 <div class="service">
     <c:choose>
         <%-- if there is a link display, make the icon clickable --%>
-        <c:when test="${jcr:isNodeType(currentNode, 'jdmix:hasLink')}">
-            <a href="${linkUrl}"><i class="fa ${icon} service-icon"></i></a>
+        <c:when test="${not empty linkNode}">
+            <a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>"><i class="fa ${icon} service-icon"></i></a>
         </c:when>
         <c:otherwise><i class="fa ${icon} service-icon"></i></c:otherwise>
     </c:choose>
@@ -39,8 +39,8 @@ and not empty currentNode.properties['internalLink'].node}">
 
         <p>${description}</p>
         <%-- display a read more text link if a link has been provided --%>
-        <c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink')}">
-            <a href="${linkUrl}" alt="${title}">
+        <c:if test="${not empty linkNode}">
+            <a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>" alt="${title}">
                 <c:choose>
                     <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                         <template:include view="hidden.buttonText"/>
