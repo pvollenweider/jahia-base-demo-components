@@ -43,7 +43,7 @@
                                           node="${currentNode}"/>
 
                 <div id="filters-container" class="cbp-l-filters-text content-xs">
-                    <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"> All</div>
+                    <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"><fmt:message key="jdnt_companies.all"/></div>
                     |
                     <c:forEach items="${options}" var="option" varStatus="items">
                         <div data-filter=".${option.value.string}" class="cbp-filter-item">${option.displayName}</div>
