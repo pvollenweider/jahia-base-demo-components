@@ -78,7 +78,7 @@ public class StockWidgetFilter extends AbstractFilter{
 
             url.setQuery(m.keySet().toArray(new String[m.size()]), m.values().toArray(new String[m.size()]));
             long l = System.currentTimeMillis();
-            logger.error(("Start request : " + url);
+            logger.debug("Start request : " + url);
             GetMethod httpMethod = new GetMethod(url.toString());
             try {
                 httpClient.getParams().setSoTimeout(15000);
@@ -86,7 +86,7 @@ public class StockWidgetFilter extends AbstractFilter{
                 return new JSONObject(httpMethod.getResponseBodyAsString());
             } finally {
                 httpMethod.releaseConnection();
-                logger.error(("Request " + url + " done in "+(System.currentTimeMillis()-l) + "ms");
+                logger.debug("Request " + url + " done in "+(System.currentTimeMillis()-l) + "ms");
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
