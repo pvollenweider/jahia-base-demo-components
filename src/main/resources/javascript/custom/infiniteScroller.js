@@ -1,19 +1,20 @@
-var docLoading = false;
+//Global variables
+var gDocLoading         = false;
+var gStart              = 0;
 
 //Create an array with the path/url from the items of the list
 //Then append the result HTML from each url, from a start-end using an offset
-function getNext(begin, offset){
-    var url= $('#infiniteScrollerInit').attr('url').split(',');
-    var start= $('#infiniteScrollerInit').attr('start');
-    var finish= $('#infiniteScrollerInit').attr('finish');
+function getNext(begin, offset, url){
 
+    //When it should stop?
+    var end = ( parseInt(begin) + parseInt(offset));
 
-    var end = begin + offset;
+    numOfUrlsToLoad = url.length-1;
 
-
-
+    //var << end >> can't be higher than the rest of url's to load.
+    if (end > numOfUrlsToLoad) end = numOfUrlsToLoad;
     //Check if our array length is greater than the next index
-    if (url.length > begin) {
+    if (numOfUrlsToLoad > begin) {
         for (i = begin; i < end; i++) {
             if (i<url.length) {
                 $.ajax({
@@ -25,38 +26,38 @@ function getNext(begin, offset){
                         var newData = $('<div>').html(text);
                         $('#infiniteScrollingLoader').append(newData);
                         newData.hide().fadeIn("slow");
-
                         //Stop flag
-                        docLoading = false;
-                        start = end;
+                        gDocLoading = false;
+                        //New value for the starting index of url array.
+                        gStart = end;
                     },
                     error: function (ajaxContext) {
                         console.log("Error getting the next item at the url: "+url[i])
-                        docLoading =true;
+                        gDocLoading =true;
                     }
                 });
             } else {
-                docLoading = true;
+                gDocLoading = true;
             }
         }
     }
     return true;
 }
-
 $(document).ready(function() {
-    var start= $('#infiniteScrollerInit').attr('start');
-    var finish= $('#infiniteScrollerInit').attr('finish');
+    var url             = $('#infiniteScrollerInit').attr('url').split(',');
+    gStart              = parseInt($('#infiniteScrollerInit').attr('start'));
+    var finish          = parseInt($('#infiniteScrollerInit').attr('finish'));
     //Check if the placeholder for the loaded HTML exist.
     if($("#infiniteScrollingLoader").length == 0) {
         //it doesn't exist
         $("#infiniteScrollerMessage").toggle();
     } else {
         $(window).scroll(function () {
-            if (!docLoading && $(window).scrollTop() + $(window).height() == $(document).height()) {
-                //stop flag
-                docLoading = true;
+            if ((!gDocLoading) && (($(window).scrollTop() + $(window).height()) >= ( $(document).height() - $(".footer-v1").height()))) {
+                //Stop flag
+                gDocLoading = true;
                 //Get next series of items to show
-                getNext(start, finish);
+                getNext(gStart, finish,url);
             }
         });
     }
