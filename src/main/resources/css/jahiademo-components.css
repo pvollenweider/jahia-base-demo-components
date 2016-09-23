@@ -26,3 +26,7 @@
 .flip-container:hover .flipper, .flip-container.hover .flipper {
     transform: rotateY(180deg);
 }
+/* Infinite scroller - Content loader button*/
+.btn-u.btn-u-lg.content-loader:focus {
+    color: #fff;
+}

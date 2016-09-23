@@ -15,7 +15,11 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
+
+<c:set var="loadAction" value="${currentNode.properties['loadAction'].string}" />
+
 <template:addResources type="javascript" resources="custom/infiniteScroller.js"/>
+<template:addResources type="css" resources="jahiademo-components.css"/>
 
 <c:set var="boundComponent" value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
 
@@ -51,13 +55,13 @@
             <jcr:sql var="query" sql='${boundComponent.properties["jcr:statement"].string}'/>
             <c:set var="scrollerUrls" value=""/>
             [<c:forEach items="${query.nodes}" var="items">
-                <c:set var="scrollerUrls" value="${scrollerUrls}${url.base}${items.path}.html.ajax,"/>
-            </c:forEach>
+            <c:set var="scrollerUrls" value="${scrollerUrls}${url.base}${items.path}.html.ajax,"/>
+        </c:forEach>
         </c:if>
 
         <c:set var="start" value="${currentNode.properties['pageSize'].long}" />
         <c:set var="finish" value="${currentNode.properties['loadItems'].long}" />
 
-        <div id="infiniteScrollerInit" url='${scrollerUrls}' start="${start}" finish="${finish}" />
+        <div id="infiniteScrollerInit" url='${scrollerUrls}' start="${start}" finish="${finish}" loadAction="${loadAction}" />
     </c:if>
 </c:if>

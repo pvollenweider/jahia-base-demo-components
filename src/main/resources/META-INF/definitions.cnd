@@ -212,6 +212,7 @@
 [jdnt:infiniteScroller] > jnt:content, jdmix:jahiademo, jmix:bindedComponent
  - pageSize (long) = '10' mandatory autocreated
  - loadItems (long) = '1' mandatory autocreated
+ - loadAction (string, choicelist) = 'windowScroll' mandatory internationalized < 'windowScroll', 'Button'
 
 [jdnt:infiniteScrollerLoader] > jnt:content, jdmix:jahiademo, jmix:bindedComponent
 
