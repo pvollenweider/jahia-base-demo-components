@@ -29,7 +29,6 @@
 <template:include view="hidden.header"/>
 <!-- Main container -->
 <c:set var="componentId" value="${currentNode.identifier}"/>
-<c:set var="jsID" value="${fn:replace(currentNode.identifier, '-','' )}"/>
 <div class="slider-tab-container" id="sliderEdit-${componentId}">
     <div class="slider-tab-navigation">
         <div class="dropdown">
