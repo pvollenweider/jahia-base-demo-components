@@ -150,7 +150,7 @@
  extends = jnt:event
  itemtype = content
  - downloadTitle (string) internationalized
- - pdfVersion (weakreference, picker[type='file']) i18n
+ - pdfVersion (weakreference, picker[type='pdf']) i18n
 
 [jdnt:eventTabs] > jnt:content, jdmix:jahiademo, jmix:list, mix:title, jdmix:ajaxComponent
  - startPage (weakreference, picker[type='page'])

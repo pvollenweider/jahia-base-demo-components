@@ -22,27 +22,30 @@
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <jcr:nodeProperty node="${currentNode}" name="pdfVersion" var="pdfVersion"/>
 <c:if test="${not empty pdfVersion}">
-    <c:url var="pdfUrl" value="${pdfVersion.node.url}" context="/"/>
-    <template:addCacheDependency node="${pdfVersion.node}"/>
     <c:set var="label" value="${currentNode.properties.downloadTitle.string}"/>
     <c:if test="${empty label}">
         <c:set var="label"><fmt:message key="jdmix_fileAttachment.label"/></c:set>
     </c:if>
     <p>
         <div>
-        ${pdfVersion.node.name}
-            <c:if test="${fn:containsIgnoreCase(pdfVersion.node.name, '.pdf')}">
-                <a class="view-pdf" href="${pdfUrl}" title="${title}">
-                    <strong>
-                        <i class="fa fa-fw fa-eye" title="<fmt:message key="label.view"/>"></i>
-                    </strong>
-                    <div class="pdf-preview" style="display: none;">
-                        <object type="application/pdf" data="${pdfUrl}" width="100%" height="500"><fmt:message key="label.pdfView.noSupport"/><br/><a href="${pdfUrl}"><strong>${pdfVersion.node.name} <i class="fa fa-download" title="<fmt:message key="label.download"/>"></i></strong></a></object>
-                    </div>
-                </a>
-            </c:if>
+        <template:module node="${pdfVersion.node}" view="hidden.name" editable="false"/>
+            <a class="view-pdf" href="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>" title="${title}">
+                <strong>
+                    <i class="fa fa-fw fa-eye" title="<fmt:message key="label.view"/>"></i>
+                </strong>
+                <div class="pdf-preview" style="display: none;">
+                    <object type="application/pdf" data="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>" width="100%" height="500">
+                        <fmt:message key="label.pdfView.noSupport"/><br/>
+                        <a href="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>">
+                            <strong><template:module node="${pdfVersion.node}" view="hidden.name" editable="false"/>
+                                <i class="fa fa-download" title="<fmt:message key="label.download"/>"></i>
+                            </strong>
+                        </a>
+                    </object>
+                </div>
+            </a>
             &nbsp;
-            <a href="${pdfUrl}">
+            <a href="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>">
                 <strong>
                     <i class="fa fa-download" title="<fmt:message key="label.download"/>"></i>
                 </strong>
