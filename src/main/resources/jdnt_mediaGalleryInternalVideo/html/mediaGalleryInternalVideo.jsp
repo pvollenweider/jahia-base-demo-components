@@ -18,7 +18,7 @@
 <c:set var="itemWidth" value="${currentNode.parent.properties['itemWidth'].string}"/>
 <c:set var="videoURL" value="${currentNode.properties['video'].node.url}"/>
 <template:addCacheDependency node="${currentNode.properties['video'].node}"/>
-
+<galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
 <c:choose>
     <c:when test="${renderContext.editMode}">
         <%-- if edit mode do not link to the photoswipe preview --%>
@@ -37,3 +37,4 @@
         <figcaption itemprop="caption description">${caption}</figcaption>
     </c:otherwise>
 </c:choose>
+</galleryfigure>

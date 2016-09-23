@@ -191,7 +191,7 @@
  - jcr:title (string) internationalized
  - image (weakreference, picker[type='image']) < 'jmix:image'
 
-[jdnt:mediaGallery] > jnt:content, mix:title, jdmix:jahiademo
+[jdnt:mediaGallery] > jnt:content, mix:title, jdmix:jahiademo, jmix:list
  + * (jdnt:mediaGalleryImg)
  + * (jdnt:mediaGalleryInternalVideo)
  + * (jdnt:mediaGalleryExternalVideo)

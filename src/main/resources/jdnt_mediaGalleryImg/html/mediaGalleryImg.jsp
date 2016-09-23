@@ -16,6 +16,7 @@
 <template:addCacheDependency node="${image}"/>
 <c:set var="caption" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="itemWidth" value="${currentNode.parent.properties['itemWidth'].string}"/>
+<galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
 <c:choose>
     <c:when test="${renderContext.editMode}">
         <img src="${image.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
@@ -30,4 +31,5 @@
     </c:otherwise>
 </c:choose>
 <figcaption itemprop="caption description">${caption}</figcaption>
+</galleryfigure>
 

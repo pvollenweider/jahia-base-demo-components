@@ -43,12 +43,9 @@ In the folder of skin CSS file there are also:
 <c:if test="${not empty title}">
     <h2>${title}</h2>
 </c:if>
-
 <div class="myPhotoGallery" itemscope itemtype="http://schema.org/ImageGallery">
     <c:forEach items="${images}" var="galImage" varStatus="item">
-        <galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
             <template:module node="${galImage}" nodeTypes="jdnt:mediaGalleryImg" editable="true"/>
-        </galleryfigure>
     </c:forEach>
 </div>
 <div class="row"></div>

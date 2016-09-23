@@ -19,7 +19,7 @@
 <c:set var="itemWidth" value="${currentNode.parent.properties['itemWidth'].string}"/>
 <c:set var="videoID" value="${currentNode.properties['videoId'].string}"/>
 <c:set var="videoSource" value="${currentNode.properties['videoService'].string}"/>
-
+<galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
 <%-- set the url of the video based on the service hosting the video --%>
 <c:choose>
     <c:when test="${fn:toLowerCase(videoSource) == 'vimeo'}">
@@ -48,5 +48,5 @@
         <figcaption itemprop="caption description">${caption}</figcaption>
     </c:otherwise>
 </c:choose>
-
+</galleryfigure>
 
