@@ -21,13 +21,5 @@
 <c:set var="galleryImgs" value="${currentNode.properties['galleryImg']}"/>
 
 <c:forEach var="galleryImg" items="${galleryImgs}" varStatus="status">
-    <template:addCacheDependency node="${galleryImg.node}"/>
-    <c:url var="galleryImgUrl" value="${galleryImg.node.url}" context="/"/>
-    <div class="item">
-        <a href="${galleryImgUrl}"
-           data-size="${galleryImg.node.properties['j:width'].string}x${galleryImg.node.properties['j:height'].string}"><img
-                class="img-responsive full-width" src="${galleryImgUrl}"
-                height="${galleryImg.node.properties['j:height'].string}"
-                width="${galleryImg.node.properties['j:height'].string}"/></a>
-    </div>
+    <template:module node="${galleryImg.node}" view="hidden.galleryItems" editable="false"/>
 </c:forEach>

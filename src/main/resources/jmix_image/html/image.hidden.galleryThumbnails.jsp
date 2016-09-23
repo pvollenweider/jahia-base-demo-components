@@ -17,9 +17,7 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-
-<c:set var="galleryImgs" value="${currentNode.properties['galleryImg']}"/>
-
-<c:forEach var="galleryImg" items="${galleryImgs}" varStatus="status">
-    <template:module node="${galleryImg.node}" view="hidden.galleryThumbnails" editable="false"/>
-</c:forEach>
+<c:url var="galleryImgUrl" value="${currentNode.url}" context="/"/>
+<div class="item">
+    <img src="${galleryImgUrl}?t=thumbnail2"/>
+</div>
