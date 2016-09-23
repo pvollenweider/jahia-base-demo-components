@@ -62,6 +62,6 @@
         <c:set var="start" value="${currentNode.properties['pageSize'].long}" />
         <c:set var="finish" value="${currentNode.properties['loadItems'].long}" />
 
-        <div id="infiniteScrollerInit" url='${scrollerUrls}' start="${start}" finish="${finish}" loadAction="${loadAction}" />
+        <div id="infiniteScrollerInit" url='${scrollerUrls}' start="${start}" finish="${finish}" loadAction="${loadAction}"></div>
     </c:if>
 </c:if>
