@@ -73,7 +73,6 @@ $(document).ready(function() {
     } else {
         //If loadAction is window scroll, then the load of content is via the window scroll event
         if (loadAction.localeCompare(WINDOW_SCROLL) == 0) {
-            console.log(WINDOW_SCROLL);
             $(window).scroll(function () {
                 loadContent(finish,url);
             });
