@@ -19,12 +19,10 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <c:set var="linkNode" value="${currentNode.properties.internalLink.node}"/>
-<c:url var="linkNodeUrl" value="${linkNode.url}" context="/"/>
 
 <c:set var="linkTitle" value="${currentNode.properties.linkTitle.string}"/>
 <c:if test="${empty linkTitle}">
     <c:set var="linkTitle" value="${linkNode.displayableName}"/>
 </c:if>
-
-<a href="${linkNodeUrl}" style="text-decoration: none;"
+<a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false" />" style="text-decoration: none;"
    class="btn-u btn-brd btn-brd-hover btn-u-light">${linkTitle}</a>
