@@ -16,6 +16,7 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
+<template:addCacheDependency node="${currentNode.properties['image'].node}"/>
 
 <%-- get the image url and the caption --%>
 <c:url var="imageUrl" value="${currentNode.properties['image'].node.url}"  context="/"/>
