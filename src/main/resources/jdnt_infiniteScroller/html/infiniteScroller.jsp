@@ -32,9 +32,6 @@
 
     <c:set var="varName">${boundComponent.identifier}_loaded</c:set>
     <c:set var="totalSize" value="${2147483647}"/>
-    <c:if test="${not empty pagerLimits[varName]}">
-        <c:set var="totalSize" value="${pagerLimits[varName]+1}"/>
-    </c:if>
 
     <template:initPager totalSize="${totalSize}" pageSize="${pageSize}" id="${boundComponent.identifier}"/>
 
@@ -62,6 +59,19 @@
         <c:set var="start" value="${currentNode.properties['pageSize'].long}" />
         <c:set var="finish" value="${currentNode.properties['loadItems'].long}" />
 
-        <div id="infiniteScrollerInit" url='${scrollerUrls}' start="${start}" finish="${finish}" loadAction="${loadAction}"></div>
+        <div id="infiniteScrollerInit"
+             url='${scrollerUrls}'
+             start="${start}"
+             finish="${finish}"
+             loadAction="${loadAction}"
+             buttonMessage="<c:choose>
+                                <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
+                                    <template:include view="hidden.buttonText"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message key="jdnt_infiniteScroller.readmore"/>
+                                </c:otherwise>
+                            </c:choose>">
+        </div>
     </c:if>
 </c:if>

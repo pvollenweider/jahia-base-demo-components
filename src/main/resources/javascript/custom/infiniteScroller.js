@@ -65,6 +65,7 @@ $(document).ready(function() {
     gStart              = parseInt($('#infiniteScrollerInit').attr('start'));
     var finish          = parseInt($('#infiniteScrollerInit').attr('finish'));
     var loadAction      = $('#infiniteScrollerInit').attr('loadAction');
+    var buttonMessage   = $('#infiniteScrollerInit').attr('buttonMessage');
     //Check if the placeholder for the loaded HTML exist.
     if($("#infiniteScrollingLoader").length == 0) {
         //it doesn't exist
@@ -78,7 +79,7 @@ $(document).ready(function() {
             });
             //else If loadAction is by clicking a button, then the load of content is via the click event
         } else if (loadAction.localeCompare(BUTTON) == 0){
-            $("#infiniteScrollingLoader").after("<a id='loadContent' class='btn-u btn-u-lg content-loader' href='javascript:void(0);'>View More</a>");
+            $("#infiniteScrollingLoader").after("<a id='loadContent' class='btn-u btn-u-lg content-loader' href='javascript:void(0);'>"+buttonMessage+"</a>");
             $("#loadContent").click(function () {
                 loadContent(finish,url);
                 //All content loaded. Hide the "View More" button

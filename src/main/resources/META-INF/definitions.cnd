@@ -180,7 +180,7 @@
 
 
 [jdmix:buttonText] mixin
- extends = jdnt:highlight
+ extends = jdnt:highlight, jdnt:infiniteScroller
  - buttonTxt (string) = 'Read More' internationalized
 
 [jdnt:photoGallery] > jnt:content, mix:title, jdmix:jahiademo
