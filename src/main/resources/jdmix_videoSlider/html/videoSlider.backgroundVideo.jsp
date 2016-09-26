@@ -20,18 +20,19 @@
 
 <jcr:nodeProperty node="${currentNode}" name="mp4" var="mp4"/>
 <jcr:nodeProperty node="${currentNode}" name="webm" var="webm"/>
-<c:if test="${not empty mp4}">
-    <c:url var="mp4Url" value="${mp4.node.url}" context="/"/>
-</c:if>
-<c:if test="${not empty webm}">
-    <c:url var="webmUrl" value="${webm.node.url}" context="/"/>
-</c:if>
 
 <video data-autopause="false" data-mute="true" data-loop="true" data-fill-mode="fill">
-    <c:if test="${not empty mp4.node}">
-        <source src="${mp4Url}" type="video/mp4"/>
-    </c:if>
-    <c:if test="${not empty webm.node}">
-        <source src="${webmUrl}" type="video/webm"/>
-    </c:if>
+    <c:choose>
+        <c:when test="${not empty mp4.node}">
+            <template:addCacheDependency node="${mp4.node}"/>
+            <c:url var="mp4Url" value="${mp4.node.url}" context="/"/>
+            <source src="${mp4Url}" type="video/mp4"/>
+        </c:when>
+        <c:when test="${not empty webm.node}">
+            <template:addCacheDependency node="${webm.node}"/>
+            <c:url var="webmUrl" value="${webm.node.url}" context="/"/>
+            <source src="${webmUrl}" type="video/webm"/>
+        </c:when>
+        <c:otherwise></c:otherwise>
+    </c:choose>
 </video>
