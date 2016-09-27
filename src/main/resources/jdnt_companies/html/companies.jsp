@@ -46,7 +46,9 @@
                     <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"><fmt:message key="jdnt_companies.all"/></div>
                     |
                     <c:forEach items="${options}" var="option" varStatus="items">
-                        <div data-filter=".${option.value.string}" class="cbp-filter-item">${option.displayName}</div>
+                        <div data-filter=".${option.value.string}" class="cbp-filter-item">
+                            <fmt:message key="jdnt_company.industryCat.${option.value.string}"/>
+                        </div>
                         <c:if test="${not items.last}"> |</c:if>
                     </c:forEach>
                 </div>
