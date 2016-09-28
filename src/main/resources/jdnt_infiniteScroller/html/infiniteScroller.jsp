@@ -49,11 +49,8 @@
 
         <%-- We set a query if the binded node is a query component (because the bound component is empty). --%>
         <c:if test="${jcr:isNodeType(boundComponent, 'jnt:query')}">
-            <jcr:sql var="query" sql='${boundComponent.properties["jcr:statement"].string}'/>
-            <c:set var="scrollerUrls" value=""/>
-            [<c:forEach items="${query.nodes}" var="items">
-            <c:set var="scrollerUrls" value="${scrollerUrls}${url.base}${items.path}.html.ajax,"/>
-        </c:forEach>
+            <template:include view="hidden.initquery"/>
+            <c:set var="scrollerUrls" value="${moduleMap.scrollerUrls}"/>
         </c:if>
 
         <c:set var="start" value="${currentNode.properties['pageSize'].long}" />
