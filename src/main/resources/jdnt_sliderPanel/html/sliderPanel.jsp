@@ -58,18 +58,16 @@
     </c:otherwise>
 </c:choose>
 
-
-TEST123: ${image.name}ee<template:module path="${image.path}" view="hidden.contentURL"/>ee
-
 <div class="ms-slide" style="z-index: 10">
     <%-- loading image, this is a part of the original templates --%>
     <img src="<c:url value="${url.currentModule}/img/blank.gif"/>" data-src="${backgroundUrl}" alt=""/>
 
     <%-- if a small photo was provided display it --%>
     <c:if test="${not empty image}">
+        <template:module path='${image.path}' editable='false' view='hidden.contentURL' var="imageUrl"/>
         <div class="ms-layer sidePanelPhoto"
              style="left: ${photoLayout};">
-            <img src="${image.name}" alt=""/>
+            <img src="${imageUrl}" alt=""/>
         </div>
     </c:if>
 
