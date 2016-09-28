@@ -22,7 +22,6 @@ package org.jahia.modules.jahiademo.filter;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpURL;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.lang.StringUtils;
 import org.jahia.services.content.JCRCallback;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.JCRSessionWrapper;
@@ -39,91 +38,129 @@ import javax.jcr.RepositoryException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class StockWidgetFilter extends AbstractFilter{
+public class StockWidgetFilter extends AbstractFilter {
 
-    private transient static Logger logger = LoggerFactory.getLogger(StockWidgetFilter.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(StockWidgetFilter.class);
+    private static final String PROPERTY_VALUE = "value";
+    private static final String PROPERTY_VARIATION = "variation";
+    private static final String PROPERTY_DESCRIPTION = "description";
     private static String API_URL = "finance.google.com";
     private static String API_path = "/finance/info";
 
+    /**
+     *
+     * @param renderContext
+     * @param resource
+     * @param chain
+     * @return
+     * @throws Exception
+     */
     @Override
-    public String execute(String previousOut, RenderContext renderContext, Resource resource, RenderChain chain) throws Exception {
+    public String prepare(final RenderContext renderContext,
+                          final Resource resource,
+                          final RenderChain chain) throws Exception {
+        final JSONObject stock = queryGoogleFinanceAPI(API_path, "client", "ig", "q", getStockProperty(resource, "stock"));
+        final String stockValue;
+        final String stockVariation;
+        final String stockDescription;
 
-        JSONObject o = queryGoogleFinanceAPI(API_path,"client","ig","q",getStockProperty(resource,"stock"));
-        if (o != null){
-            String value = o.getString("l");
-            String variation = o.getString("c");
-            String description = o.getString("e");
+        if (stock != null) {
+            final String value = stock.getString("l");
+            final String variation = stock.getString("c");
+            final String description = stock.getString("e");
+            stockValue = value;
+            stockVariation = variation;
+            stockDescription = description;
 
-            previousOut = StringUtils.replace(previousOut, "%%StockValue%%", value);
-            previousOut = StringUtils.replace(previousOut, "%%StockVariation%%", formatVariation(variation));
-            previousOut = StringUtils.replace(previousOut,"%%StockDescription%%", description);
-            saveStock(resource,value,variation,description);
-        }else{
-            previousOut = StringUtils.replace(previousOut, "%%StockValue%%", getStockProperty(resource,"value"));
-            previousOut = StringUtils.replace(previousOut, "%%StockVariation%%", formatVariation(getStockProperty(resource,"variation")));
-            previousOut = StringUtils.replace(previousOut,"%%StockDescription%%", getStockProperty(resource,"description"));
+            saveStock(resource, value, variation, description);
+        } else {
+            stockValue = getStockProperty(resource, PROPERTY_VALUE);
+            stockVariation = getStockProperty(resource, PROPERTY_VARIATION);
+            stockDescription = getStockProperty(resource, PROPERTY_DESCRIPTION);
         }
-        return previousOut;
+        renderContext.getRequest().setAttribute("stockValue", stockValue);
+        renderContext.getRequest().setAttribute("stockVariation", stockVariation);
+        renderContext.getRequest().setAttribute("stockDescription", stockDescription);
+
+        return super.prepare(renderContext, resource, chain);
     }
 
-    private JSONObject queryGoogleFinanceAPI(String path, String... params) throws RepositoryException {
+    /**
+     *
+     * @param path
+     * @param params
+     * @return
+     * @throws RepositoryException
+     */
+    private JSONObject queryGoogleFinanceAPI(final String path,
+                                             final String... params) throws RepositoryException {
         try {
-            HttpClient httpClient = new HttpClient();
-            HttpURL url = new HttpURL(API_URL, -1, path);
+            final HttpClient httpClient = new HttpClient();
+            final HttpURL url = new HttpURL(API_URL, -1, path);
 
-            Map<String, String> m = new LinkedHashMap<String, String>();
+            final Map<String, String> m = new LinkedHashMap<String, String>();
             for (int i = 0; i < params.length; i += 2) {
                 m.put(params[i], params[i + 1]);
             }
 
             url.setQuery(m.keySet().toArray(new String[m.size()]), m.values().toArray(new String[m.size()]));
-            long l = System.currentTimeMillis();
-            logger.debug("Start request : " + url);
-            GetMethod httpMethod = new GetMethod(url.toString());
+            final long l = System.currentTimeMillis();
+            LOGGER.debug("Start request : " + url);
+            final GetMethod httpMethod = new GetMethod(url.toString());
             try {
                 httpClient.getParams().setSoTimeout(15000);
                 httpClient.executeMethod(httpMethod);
                 return new JSONObject(httpMethod.getResponseBodyAsString());
             } finally {
                 httpMethod.releaseConnection();
-                logger.debug("Request " + url + " done in "+(System.currentTimeMillis()-l) + "ms");
+                LOGGER.debug("Request " + url + " done in " + (System.currentTimeMillis() - l) + "ms");
             }
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            LOGGER.error(e.getMessage(), e);
             return null;
         }
     }
 
-    private void saveStock (final Resource resource, final String value, final String variation, final String description) throws RepositoryException {
+    /**
+     *
+     * @param resource
+     * @param value
+     * @param variation
+     * @param description
+     * @throws RepositoryException
+     */
+    private void saveStock(final Resource resource,
+                           final String value,
+                           final String variation,
+                           final String description) throws RepositoryException {
         JCRTemplate.getInstance().doExecuteWithSystemSessionAsUser(null, resource.getNode().getSession().getWorkspace().getName(), null,
                 new JCRCallback<Object>() {
-                    public Object doInJCR(JCRSessionWrapper session) throws RepositoryException {
-                        JCRNodeWrapper stockwidgetNode = resource.getNode();
-                        stockwidgetNode.setProperty("value",value);
-                        stockwidgetNode.setProperty("variation",variation);
-                        stockwidgetNode.setProperty("description",description);
-                        session.save();
+                    public Object doInJCR(final JCRSessionWrapper session) throws RepositoryException {
+                        final JCRNodeWrapper stockwidgetNode = session.getNode(resource.getNode().getPath());
+                        stockwidgetNode.setProperty(PROPERTY_VALUE, value);
+                        stockwidgetNode.setProperty(PROPERTY_VARIATION, variation);
+                        stockwidgetNode.setProperty(PROPERTY_DESCRIPTION, description);
+                        stockwidgetNode.saveSession();
                         return null;
                     }
                 });
     }
 
-    private String getStockProperty (Resource resource, String property) throws RepositoryException {
-        JCRNodeWrapper stockwidgetNode = resource.getNode();
-        return stockwidgetNode.getProperty(property).getString();
-    }
-
-    private String formatVariation(String variation){
-        if (variation.indexOf("0") == 0) {
-            variation = "+" + variation;
+    /**
+     *
+     * @param resource
+     * @param property
+     * @return
+     * @throws RepositoryException
+     */
+    private String getStockProperty(final Resource resource,
+                                    final String property) throws RepositoryException {
+        final JCRNodeWrapper stockwidgetNode = resource.getNode();
+        if (stockwidgetNode.hasProperty(property)) {
+            return stockwidgetNode.getProperty(property).getString();
+        } else {
+            return "";
         }
-        if (variation.indexOf("+") >= 0) {
-            variation = "<div class='arrow'></div>" + variation;
-        }
-        if (variation.indexOf("-") >= 0) {
-            variation = "<div class='arrow-down'></div>" + variation;
-        }
-        return variation;
     }
 
 }
