@@ -19,7 +19,9 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <%--
-=== This is an empty view on purpose ===
+/*
+ === This is an empty view on purpose ===
 This view will be called when the hasPeople jmix is not enabled in content item to avoid
 the content item default view being called resulting on the duplication of the main resource view on the page.
+ */
  --%>
