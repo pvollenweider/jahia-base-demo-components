@@ -16,13 +16,10 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<template:addCacheDependency node="${currentNode.properties['image'].node}"/>
-
-<%-- get the image url and the caption --%>
-<c:url var="imageUrl" value="${currentNode.properties['image'].node.url}"  context="/"/>
+<%-- get the caption --%>
 <c:set var="caption" value="${currentNode.properties['caption'].string}"/>
-
-<img class="carouselImageFull" src="${imageUrl}" alt="${caption}">
+<template:module path="${currentNode.properties.image.node.path}" view="hidden.contentURL" editable="false" var="imgURL"/>
+<img class="carouselImageFull" src="${imgURL}" alt="${caption}">
 <c:if test="${not empty caption}">
     <div class="carousel-caption">
         <p>${caption}</p>

@@ -41,7 +41,7 @@
         <c:url var="backgroundUrl" value="${url.currentModule}/img/background.jpg"/>
     </c:when>
     <c:otherwise>
-        <c:url var="backgroundUrl" value="${background.url}" context="/"/>
+        <template:module path='${background.path}' editable='false' view='hidden.contentURL' var="backgroundUrl"/>
     </c:otherwise>
 </c:choose>
 
@@ -58,6 +58,9 @@
     </c:otherwise>
 </c:choose>
 
+
+TEST123: ${image.name}ee<template:module path="${image.path}" view="hidden.contentURL"/>ee
+
 <div class="ms-slide" style="z-index: 10">
     <%-- loading image, this is a part of the original templates --%>
     <img src="<c:url value="${url.currentModule}/img/blank.gif"/>" data-src="${backgroundUrl}" alt=""/>
@@ -66,7 +69,7 @@
     <c:if test="${not empty image}">
         <div class="ms-layer sidePanelPhoto"
              style="left: ${photoLayout};">
-            <img src="<c:url value="${image.url}" context="/"/>" alt="">
+            <img src="${image.name}" alt=""/>
         </div>
     </c:if>
 
@@ -103,7 +106,7 @@
 
     <%-- if a link has been provided display it as a button --%>
     <c:if test="${not empty link}">
-        <a class="ms-layer btn-u top390" style="left:${textLayout}" href="<c:url value="${link.url}" context="/"/>"
+        <a class="ms-layer btn-u top390" style="left:${textLayout}" href="<template:module node="${link}" view="hidden.contentURL"/>"
            data-effect="bottom(40)"
            data-duration="2000"
            data-delay="1300"

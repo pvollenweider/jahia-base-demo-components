@@ -13,16 +13,18 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <c:set var="image" value="${currentNode.properties['videoPoster'].node}"/>
-<template:addCacheDependency node="${image}"/>
+<template:module node='${image}' editable='false' view='hidden.contentURL' var="imageUrl"/>
+
 <c:set var="caption" value="${currentNode.properties['jcr:title'].string}"/>
+
 <c:set var="itemWidth" value="${currentNode.parent.properties['itemWidth'].string}"/>
-<c:set var="videoURL" value="${currentNode.properties['video'].node.url}"/>
-<template:addCacheDependency node="${currentNode.properties['video'].node}"/>
+<template:module node='${currentNode.properties.video.node}' editable='false' view='hidden.contentURL' var="videoURL"/>
+
 <galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
 <c:choose>
     <c:when test="${renderContext.editMode}">
         <%-- if edit mode do not link to the photoswipe preview --%>
-        <img src="${image.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
+        <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
         <br>
     </c:when>
     <c:otherwise>
@@ -31,7 +33,7 @@
            data-type="video"
            data-video='<div class="pswp__wrapper"><div class="pswp__video-wrapper"><iframe class="pswp__video" width="960" height="640" src="${videoURL}" frameborder="0" allowfullscreen></iframe></div></div>'
         >
-            <img src="${image.url}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px" class="img-responsive">
+            <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px" class="img-responsive">
             <br/>
         </a>
         <figcaption itemprop="caption description">${caption}</figcaption>

@@ -16,13 +16,11 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<template:addCacheDependency node="${currentNode.properties['image'].node}"/>
-
 <%-- get the url of the image to display --%>
-<c:url var="imageUrl" value="${currentNode.properties['image'].node.url}" context="/"/>
+<template:module path="${currentNode.properties.image.node.path}" view="hidden.contentURL" editable="false" var="imgURL"/>
 
 <div class="owl-item owl-fix-width">
     <div class="item">
-        <img class="img-responsive" src="${imageUrl}" alt=""/>
+        <img class="img-responsive" src="${imgURL}" alt=""/>
     </div>
 </div>

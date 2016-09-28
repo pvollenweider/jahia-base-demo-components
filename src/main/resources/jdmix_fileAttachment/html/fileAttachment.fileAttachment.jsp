@@ -22,22 +22,24 @@
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <jcr:nodeProperty node="${currentNode}" name="pdfVersion" var="pdfVersion"/>
 <c:if test="${not empty pdfVersion}">
+    <template:module node="${pdfVersion.node}" view="hidden.name" editable="false" var="pdfName"/>
+    <template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false" var="pdfUrl"/>
     <c:set var="label" value="${currentNode.properties.downloadTitle.string}"/>
     <c:if test="${empty label}">
         <c:set var="label"><fmt:message key="jdmix_fileAttachment.label"/></c:set>
     </c:if>
     <p>
         <div>
-        <template:module node="${pdfVersion.node}" view="hidden.name" editable="false"/>
-            <a class="view-pdf" href="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>" title="${title}">
+        ${pdfName}
+            <a class="view-pdf" href="${pdfUrl}" title="${title}">
                 <strong>
                     <i class="fa fa-fw fa-eye" title="<fmt:message key="label.view"/>"></i>
                 </strong>
                 <div class="pdf-preview" style="display: none;">
-                    <object type="application/pdf" data="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>" width="100%" height="500">
+                    <object type="application/pdf" data="${pdfUrl}" width="100%" height="500">
                         <fmt:message key="label.pdfView.noSupport"/><br/>
-                        <a href="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>">
-                            <strong><template:module node="${pdfVersion.node}" view="hidden.name" editable="false"/>
+                        <a href="${pdfUrl}">
+                            <strong>${pdfName}
                                 <i class="fa fa-download" title="<fmt:message key="label.download"/>"></i>
                             </strong>
                         </a>
@@ -45,7 +47,7 @@
                 </div>
             </a>
             &nbsp;
-            <a href="<template:module node="${pdfVersion.node}" view="hidden.contentURL" editable="false"/>">
+            <a href="${pdfUrl}">
                 <strong>
                     <i class="fa fa-download" title="<fmt:message key="label.download"/>"></i>
                 </strong>
