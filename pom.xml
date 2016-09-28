@@ -62,8 +62,10 @@
     <description>This is the custom module (dx-base-demo-components) for running on a Digital Experience Manager server.</description>
 
     <scm>
-        <connection>scm:dummy:uri</connection>
-        <developerConnection>scm:dummy:uri</developerConnection>
+        <connection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</connection>
+        <developerConnection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</developerConnection>
+        <url>scm:git:git@github.com:Jahia/dx-base-demo-components.git</url>
+        <tag>HEAD</tag>
     </scm>
 
     <repositories>
