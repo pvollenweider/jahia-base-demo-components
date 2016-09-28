@@ -50,14 +50,25 @@
     <div class="stock-widget-wrapper">
         <div class="title color-theme">${stock}</div>
         <div class="description">
-            <p>%%StockDescription%%</p>
+            <p>${requestScope.stockDescription}</p>
         </div>
         <div class="stock-price">
             <span class="currency-value"></span>
-            <span class="<c:if test="${not renderContext.editMode}">counter</c:if> stockvalue">%%StockValue%%</span>
+            <span class="<c:if test="${not renderContext.editMode}">counter</c:if> stockvalue">${requestScope.stockValue}</span>
         </div>
         <div class="stock-variable">
-            %%StockVariation%%
+            <c:choose>
+                <c:when test="${fn:indexOf(requestScope.stockVariation, '0') == 0}">
+                    +
+                </c:when>
+                <c:when test="${fn:contains(requestScope.stockVariation, '+')}">
+                    <div class='arrow'></div>
+                </c:when>
+                <c:when test="${fn:contains(requestScope.stockVariation, '-')}">
+                    <div class='arrow-down'></div>
+                </c:when>
+            </c:choose>
+            ${requestScope.stockVariation}
         </div>
         <div class="stock-update"><fmt:message key="jdnt_stockWidget.lastUpdate"/>&nbsp;<fmt:formatDate
                 value="${currentNode.properties['jcr:lastModified'].time}"
