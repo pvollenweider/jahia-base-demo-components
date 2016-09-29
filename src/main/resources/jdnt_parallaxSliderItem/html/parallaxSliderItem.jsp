@@ -17,6 +17,7 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
+<template:addResources type="css" resources="jahiademo-components.css"/>
 
 <c:set var="backgroundImg" value="${currentNode.properties['backgroundImg'].node}"/>
 <c:if test="${not empty backgroundImg}">
@@ -31,63 +32,9 @@
     <c:set var="effectClass" value="noeffect"/>
 </c:if>
 
-<section class="parallaxPanel ${effectClass}" id="parallax${currentNode.identifier}"
+<section class="parallaxPanel ${effectClass} parallax${slideTheme}" id="parallax${currentNode.identifier}"
          style="background-image: url('${backgroundImgUrl}');
          <c:if test="${pause}">margin-bottom:400px</c:if> ">
-    <div>${body}</div>
+    <div style="width: ${width};">${body}</div>
 </section>
-
-<c:choose>
-    <c:when test="${slideTheme == 'option1'}">
-        <c:set var="backgroundColor" value="rgba(231, 76, 60, 0.85)"/>
-        <c:set var="textColor" value="#ffe3e3"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option2'}">
-        <c:set var="backgroundColor" value="rgba(45, 48, 48, 0.85)"/>
-        <c:set var="textColor" value="#cacaca"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option3'}">
-        <c:set var="backgroundColor" value="rgba(37, 35, 43, 0.94)"/>
-        <c:set var="textColor" value="#ababab"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option4'}">
-        <c:set var="backgroundColor" value="rgba(187, 187, 187, 0.85)"/>
-        <c:set var="textColor" value="#3a3535"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option5'}">
-        <c:set var="backgroundColor" value="#FFFFFF"/>
-        <c:set var="textColor" value="#000000"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option6'}">
-        <c:set var="backgroundColor" value="rgba(255,255,255,0.95)"/>
-        <c:set var="textColor" value="#000000"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option7'}">
-        <c:set var="backgroundColor" value=""/>
-        <c:set var="textColor" value="#000000"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option8'}">
-        <c:set var="backgroundColor" value=""/>
-        <c:set var="textColor" value="#FFFFFF"/>
-    </c:when>
-    <c:when test="${slideTheme == 'option9'}">
-        <c:set var="backgroundColor" value=""/>
-        <c:set var="textColor" value="#E74C3C"/>
-    </c:when>
-    <c:otherwise>
-        <c:set var="backgroundColor" value=""/>
-        <c:set var="textColor" value="#FFFFFF"/>
-    </c:otherwise>
-</c:choose>
-
-<template:addResources type="inline">
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#parallax${currentNode.identifier}").css("background-image", "url('${backgroundImgUrl}')");
-        $("#parallax${currentNode.identifier}").css("background-color", "${backgroundColor}");
-        $("#parallax${currentNode.identifier} div").width("${width}");
-        $("#parallax${currentNode.identifier} p, #parallax${currentNode.identifier} li, #parallax${currentNode.identifier} li a, #parallax${currentNode.identifier} label, #parallax${currentNode.identifier} h1, #parallax${currentNode.identifier} h2, #parallax${currentNode.identifier} h3, #parallax${currentNode.identifier} h4, #parallax${currentNode.identifier} h5, #parallax${currentNode.identifier} h6").css("color", "${textColor}");
-    })
-</script>
-</template:addResources>
 
