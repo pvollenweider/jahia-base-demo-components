@@ -11,7 +11,7 @@
                 <files jcr:primaryType="jnt:folder"/>
                 <contents jcr:primaryType="jnt:contentFolder"/>
                 <templates j:rootTemplatePath="/base"
-                    j:templateSetContext="/modules/jahiademo"
+                    j:templateSetContext="/modules/dx-base-demo-templates"
                     jcr:primaryType="jnt:templatesFolder">
                     <files jcr:primaryType="jnt:folder"/>
                     <contents jcr:primaryType="jnt:contentFolder"/>
