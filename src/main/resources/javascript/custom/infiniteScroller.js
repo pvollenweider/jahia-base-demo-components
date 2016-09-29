@@ -5,7 +5,7 @@ var gFinished           = false;
 //Load Actions
 
 var WINDOW_SCROLL       = "windowScroll"; //Load content on window scroll
-var BUTTON              = "Button";       //Load when clicking the button
+var BUTTON              = "button";       //Load when clicking the button
 
 //Create an array with the path/url from the items of the list
 //Then append the result HTML from each url, from a start-end using an offset
