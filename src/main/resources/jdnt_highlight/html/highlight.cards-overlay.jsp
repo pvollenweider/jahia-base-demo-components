@@ -22,6 +22,8 @@
 <c:set var="description" value="${currentNode.properties['description'].string}"/>
 <c:set var="image" value="${currentNode.properties['image'].node}"/>
 <%-- photoswipe files --%>
+<template:addResources type="css" resources="masonry.css"/>
+<template:addResources type="css" resources="style.css"/>
 <template:addResources type="css" resources="plugins/photoswipe/photoswipe.css"/>
 <template:addResources type="css" resources="plugins/photoswipe/default-skin/default-skin.css"/>
 <template:addResources type="javascript" resources="plugins/photoswipe/photoswipe.min.js"/>
@@ -44,7 +46,12 @@ and not empty currentNode.properties['internalLink'].node}">
     <template:module node="${linkNode}" view="hidden.contentURL" editable="false" var="linkUrl"/>
 </c:if>
 
-<div class="masonry-overlay grid-item  thumbnails grid-item-overlay thumbnail-style thumbnail-kenburn">
+
+<c:if test="${jcr:isNodeType(currentNode.parent, 'jdnt:highlights')}">
+    <c:set var="griditem" value="grid-item"/>
+</c:if>
+
+<div class="masonry-overlay ${griditem}  thumbnails grid-item-overlay thumbnail-style thumbnail-kenburn">
     <div class="thumbnail-img">
         <div class="overflow-hidden">
             <c:if test="${not renderContext.editMode}">

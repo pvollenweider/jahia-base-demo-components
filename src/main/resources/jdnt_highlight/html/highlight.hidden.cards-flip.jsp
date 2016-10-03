@@ -33,6 +33,10 @@
     </c:otherwise>
 </c:choose>
 
+<c:if test="${jcr:isNodeType(currentNode.parent, 'jdnt:highlights')}">
+    <c:set var="griditem" value="grid-item"/>
+</c:if>
+
 <%-- check if the link property has been used on this content --%>
 <c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink') and not empty currentNode.properties['internalLink']
 and not empty currentNode.properties['internalLink'].node}">
@@ -40,7 +44,7 @@ and not empty currentNode.properties['internalLink'].node}">
 </c:if>
 
 <%-- add ontouchstart for touch devices compatibility --%>
-<div class="grid-item thumbnails thumbnail-style flip-container "  >
+<div class="${griditem} thumbnails thumbnail-style flip-container "  >
     <div class="flipper">
         <div class="front">
             <img class="img-responsive" src="${imageUrl}" alt="">

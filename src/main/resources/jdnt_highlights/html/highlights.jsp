@@ -81,7 +81,7 @@
     <template:addResources><style>#block${blockid} .grid-sizer,#block${blockid} .grid-item {width: ${widthColumns}%;}</style></template:addResources>
 
     <div id="block${blockid}" class="row${marginClass}">
-        <div class="grid picture " itemscope itemtype="http://schema.org/ImageGallery">
+        <div class="picture" itemscope itemtype="http://schema.org/ImageGallery">
             <div class="grid-sizer"></div>
             <c:set var="isEmpty" value="true"/>
             <c:forEach items="${moduleMap.currentList}" var="subchild" begin="${moduleMap.begin}" end="${moduleMap.end}" varStatus="item">

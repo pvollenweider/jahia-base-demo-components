@@ -38,7 +38,11 @@ and not empty currentNode.properties['internalLink'].node}">
     <c:set var="linkNode" value="${currentNode.properties['internalLink'].node}" />
 </c:if>
 
-<div class="grid-item thumbnails thumbnail-style thumbnail-kenburn">
+<c:if test="${jcr:isNodeType(currentNode.parent, 'jdnt:highlights')}">
+    <c:set var="griditem" value="grid-item"/>
+</c:if>
+
+<div class="${griditem} thumbnails thumbnail-style thumbnail-kenburn">
     <div class="thumbnail-img">
         <div class="overflow-hidden">
             <img class="img-responsive" src="${imageUrl}" alt="">
