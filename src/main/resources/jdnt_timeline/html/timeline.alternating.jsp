@@ -20,11 +20,11 @@
 <template:addResources type="css" resources="shortcode_timeline1.css"/>
 
 <%-- Get the title of the timeline, if exists display above carousel --%>
+<div>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:if test="${not empty title}">
     <div class="headline"><h2>${title}</h2></div>
 </c:if>
-
 <ul class="timeline-v1">
     <c:set var="resourceReadOnly" value="${currentResource.moduleParams.readOnly}"/>
     <%-- Displaying the view of inherited nodetype jnt:contentList and this view is loading all subnodes,
@@ -51,8 +51,6 @@
         <%-- Add the placeholder content in edit mode --%>
         <template:include view="hidden.placeholder.alternating"/>
     </c:if>
-
-    <template:include view="hidden.footer"/>
     <li class="clearfix nofloat"></li>
 </ul>
 <%-- Add the add new content item button if in edit mode --%>
@@ -60,3 +58,5 @@
     <%-- limit to adding jnt:news nodes to the list --%>
     <template:module path="*" nodeTypes="jnt:news"/>
 </c:if>
+<template:include view="hidden.footer"/>
+</div>
