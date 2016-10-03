@@ -21,12 +21,10 @@
 
 
 <jsp:useBean id="now" class="java.util.Date" />
-<p>${moduleMap.emptyListMessage}</p>
 <%-- Get current date --%>
 <fmt:formatDate pattern="MMMM" dateStyle="long" value="${now}" var="newsMonth"/>
 <fmt:formatDate pattern="d/M/yy" dateStyle="short" value="${now}" var="newsDate"/>
 
-<ul class="timeline-v2">
     <li class="equal-height-columns">
         <div class="cbp_tmtime equal-height-column" style="height: 164px;"><span>${newsDate}</span> <span>${newsMonth}</span></div>
         <i class="cbp_tmicon rounded-x hidden-xs"></i>
@@ -64,4 +62,3 @@
             </div>
         </div>
     </li>
-</ul>

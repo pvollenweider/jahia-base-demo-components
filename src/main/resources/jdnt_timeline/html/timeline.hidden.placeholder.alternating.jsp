@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="functions" uri="http://www.jahia.org/tags/functions" %>
 <%@ taglib prefix="ui" uri="http://www.jahia.org/tags/uiComponentsLib" %>
+<%@ page import="java.util.Date" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="propertyDefinition" type="org.jahia.services.content.nodetypes.ExtendedPropertyDefinition"--%>
 <%--@elvariable id="type" type="org.jahia.services.content.nodetypes.ExtendedNodeType"--%>
@@ -17,13 +18,13 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <jsp:useBean id="now" class="java.util.Date" />
-<p>${moduleMap.emptyListMessage}</p>
-<%-- Get current date --%>
+<c:set var="tomorrow" value="<%=new Date(new Date().getTime() + 60*60*24*1000)%>"/>
 <fmt:formatDate pattern="MMMM" dateStyle="long" value="${now}" var="newsMonth"/>
 <fmt:formatDate pattern="d/M/yy" dateStyle="short" value="${now}" var="newsDate"/>
+<fmt:formatDate pattern="d/M/yy" dateStyle="short" value="${tomorrow}" var="newsTomorrowDate"/>
 
 
-<ul class="timeline-v1">
+
     <li>
         <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
         <div class="timeline-panel">
@@ -58,10 +59,9 @@
             </div>
             <div class="timeline-footer">
                 <ul class="list-unstyled list-inline blog-info">
-                    <li><i class="fa fa-clock-o"></i> ${newsDate}</li>
+                    <li><i class="fa fa-clock-o"></i> ${newsTomorrowDate}</li>
                 </ul>
             </div>
         </div>
     </li>
     <li class="clearfix nofloat"></li>
-</ul>

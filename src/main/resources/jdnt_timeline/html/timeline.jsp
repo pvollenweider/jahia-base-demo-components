@@ -39,12 +39,14 @@
 
     <%-- If the list is empty then we will display the default contentList message for empty list --%>
     <c:if test="${not empty moduleMap.emptyListMessage and (renderContext.editMode or moduleMap.forceEmptyListMessageDisplay) and isEmpty}">
+        <p>${moduleMap.emptyListMessage}</p>
+        <%-- Add the placeholder content in edit mode --%>
         <template:include view="hidden.placeholder"/>
     </c:if>
-    <%-- Add the add new content item button if in edit mode --%>
+</ul>
+<%-- Add the add new content item button if in edit mode --%>
     <c:if test="${moduleMap.editable and renderContext.editMode && !resourceReadOnly}">
         <%-- limit to adding jnt:news nodes to the list --%>
         <template:module path="*" nodeTypes="jnt:news"/>
     </c:if>
     <template:include view="hidden.footer"/>
-</ul>

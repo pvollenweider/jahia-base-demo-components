@@ -43,15 +43,14 @@
                                  editable="${moduleMap.editable && !resourceReadOnly}"/>
             </div>
         </li>
-
         <c:set var="isEmpty" value="false"/>
     </c:forEach>
-
     <%-- If the list is empty then we will display the default contentList message for empty list --%>
     <c:if test="${not empty moduleMap.emptyListMessage and (renderContext.editMode or moduleMap.forceEmptyListMessageDisplay) and isEmpty}">
+        <p>${moduleMap.emptyListMessage}</p>
+        <%-- Add the placeholder content in edit mode --%>
         <template:include view="hidden.placeholder.alternating"/>
     </c:if>
-
 
     <template:include view="hidden.footer"/>
     <li class="clearfix nofloat"></li>
