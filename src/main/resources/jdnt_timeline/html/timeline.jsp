@@ -39,7 +39,7 @@
 
     <%-- If the list is empty then we will display the default contentList message for empty list --%>
     <c:if test="${not empty moduleMap.emptyListMessage and (renderContext.editMode or moduleMap.forceEmptyListMessageDisplay) and isEmpty}">
-        ${moduleMap.emptyListMessage}
+        <template:include view="hidden.placeholder"/>
     </c:if>
     <%-- Add the add new content item button if in edit mode --%>
     <c:if test="${moduleMap.editable and renderContext.editMode && !resourceReadOnly}">

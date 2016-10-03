@@ -22,42 +22,46 @@
 <fmt:formatDate pattern="MMMM" dateStyle="long" value="${now}" var="newsMonth"/>
 <fmt:formatDate pattern="d/M/yy" dateStyle="short" value="${now}" var="newsDate"/>
 
-<ul class="timeline-v2">
-    <li class="equal-height-columns">
-        <div class="cbp_tmtime equal-height-column" style="height: 164px;"><span>${newsDate}</span> <span>${newsMonth}</span></div>
-        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-        <div class="cbp_tmlabel equal-height-column" style="height: 194px;">
-            <h2><fmt:message key="jdnt_timeline.placeholderTitle"/></h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
 
-                    <div class="md-margin-bottom-20"></div>
-                </div>
-                <div class="col-md-8">
-                    <p><fmt:message key="jdnt_timeline.placeholderBody"/></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id purus a ex bibendum sagittis sit amet vel quam. Fusce sodales ...</p>
-                    <a class="btn-u btn-u-sm" href="/cms/render/default/en/sites/digitall/home/component-test/section--container--row--grid-main/timeline/add-a-news-article.html">Read More</a>
-                </div>
+<ul class="timeline-v1">
+    <li>
+        <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+            </div>
+            <div class="timeline-body text-justify">
+                <h2><a href="javascript:void(0)"><fmt:message key="jdnt_timeline.placeholderTitle"/></a></h2>
+                <p><fmt:message key="jdnt_timeline.placeholderBody"/></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id purus a ex bibendum sagittis sit amet vel quam. Fusce sodales fermentum dignissim. Cu...</p>
+                <a class="btn-u btn-u-sm" href="javascript:void(0)"><fmt:message key="jdmix_buttonText.readmore"/></a>
+            </div>
+            <div class="timeline-footer">
+                <ul class="list-unstyled list-inline blog-info">
+                    <li><i class="fa fa-clock-o"></i> ${newsDate}</li>
+                </ul>
             </div>
         </div>
     </li>
-    <li class="equal-height-columns">
-        <div class="cbp_tmtime equal-height-column" style="height: 349px;"><span>${newsDate}</span> <span>${newsMonth}</span></div>
-        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-        <div class="cbp_tmlabel equal-height-column" style="height: 379px;">
-            <h2>Add A News Article - 2</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
-                    <div class="md-margin-bottom-20"></div>
-                </div>
-                <div class="col-md-8">
-                    <p><fmt:message key="jdnt_timeline.placeholderBody"/></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id purus a ex bibendum sagittis sit amet vel quam. Fusce sodales fermentum dignissim. Curabitur sit amet risus non neque pellentesque pharetra pharetra at dolor. Donec fringilla nisl sed urna consectetur, at efficitur tortor pharetra. Nullam quis tellus sapien. Praesent mollis leo eu nisi feugiat posuere. Integer suscipit, est sit amet aliquam tincidunt, sapien enim commodo mauris, sit amet scelerisque purus felis et ligula. Nullam vel metus nisl. Nullam nec volutpat sem, ut pretium neque. Curabitur eu imperdiet velit. Curabitur vulputate mi nunc, ac pellentesque magna mattis sed. Curabitur in neque ac ligula finibus imperdiet gravida maximus massa. Nunc malesuada nisi sed justo imperdiet porttitor. Nullam non arcu velit. Morbi iaculis auctor erat eu porta. Sed suscipit a augue vitae malesuada.</p>
-                    <p></p>
-                </div>
+
+
+    <li class="timeline-inverted">
+        <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+            </div>
+            <div class="timeline-body text-justify">
+                <h2><a href="javascript:void(0)"><fmt:message key="jdnt_timeline.placeholderTitle"/></a></h2>
+                <p><fmt:message key="jdnt_timeline.placeholderBody"/></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id purus a ex bibendum sagittis sit amet vel quam. Fusce sodales fermentum dignissim. Curabitur sit amet risus non neque pellentesque pharetra pharetra at dolor. Donec fringilla nisl sed urna consectetur, at efficitur tortor pharetra. Nullam quis tellus sapien. Praesent mollis leo eu nisi feugiat posuere. Integer suscipit, est sit amet aliquam tincidunt, sapien enim commodo mauris, sit amet scelerisque purus felis et ligula. Nullam vel metus nisl. Nullam nec volutpat sem, ut pretium neque. Curabitur eu imperdiet velit. Curabitur vulputate mi nunc, ac pellentesque magna mattis sed. Curabitur in neque ac ligula finibus imperdiet gravida maximus massa. Nunc malesuada nisi sed justo imperdiet porttitor. Nullam non arcu velit. Morbi iaculis auctor erat eu porta. Sed suscipit a augue vitae malesuada.</p>
+                <p>&nbsp;</p>
+                <p></p>
+            </div>
+            <div class="timeline-footer">
+                <ul class="list-unstyled list-inline blog-info">
+                    <li><i class="fa fa-clock-o"></i> ${newsDate}</li>
+                </ul>
             </div>
         </div>
     </li>
+    <li class="clearfix nofloat"></li>
 </ul>

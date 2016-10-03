@@ -19,6 +19,12 @@
 
 <template:addResources type="css" resources="shortcode_timeline1.css"/>
 
+<%-- Get the title of the timeline, if exists display above carousel --%>
+<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
+<c:if test="${not empty title}">
+    <div class="headline"><h2>${title}</h2></div>
+</c:if>
+
 <ul class="timeline-v1">
     <c:set var="resourceReadOnly" value="${currentResource.moduleParams.readOnly}"/>
     <%-- Displaying the view of inherited nodetype jnt:contentList and this view is loading all subnodes,
@@ -43,7 +49,7 @@
 
     <%-- If the list is empty then we will display the default contentList message for empty list --%>
     <c:if test="${not empty moduleMap.emptyListMessage and (renderContext.editMode or moduleMap.forceEmptyListMessageDisplay) and isEmpty}">
-        ${moduleMap.emptyListMessage}
+        <template:include view="hidden.placeholder.alternating"/>
     </c:if>
 
 
