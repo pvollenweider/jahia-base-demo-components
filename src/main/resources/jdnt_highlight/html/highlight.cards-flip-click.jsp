@@ -24,4 +24,6 @@
     <template:addResources type="javascript" resources="custom/highlightCardFlip.js"/>
 </c:if>
 
-<template:include view="hidden.cards-flip"/>
+<template:include view="hidden.cards-flip">
+    <template:param name="flipClass" value="flip-container-click"/>
+</template:include>

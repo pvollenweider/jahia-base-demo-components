@@ -44,7 +44,7 @@ and not empty currentNode.properties['internalLink'].node}">
 </c:if>
 
 <%-- add ontouchstart for touch devices compatibility --%>
-<div class="${griditem} thumbnails thumbnail-style flip-container "  >
+<div class="${griditem} thumbnails thumbnail-style ${flipClass} flip-container">
     <div class="flipper">
         <div class="front">
             <img class="img-responsive" src="${imageUrl}" alt="">

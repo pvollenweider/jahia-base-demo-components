@@ -23,4 +23,6 @@
     <template:addResources type="css" resources="jahiademo-components.css"/>
 </c:if>
 
-<template:include view="hidden.cards-flip"/>
+<template:include view="hidden.cards-flip">
+    <template:param name="flipClass" value="flip-container-hover"/>
+</template:include>
