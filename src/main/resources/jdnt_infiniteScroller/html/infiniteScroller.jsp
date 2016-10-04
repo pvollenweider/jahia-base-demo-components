@@ -23,7 +23,7 @@
 
 <c:set var="boundComponent" value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
 
-<c:if test="${not empty boundComponent and (jcr:isNodeType(boundComponent, 'jmix:list') or jcr:isNodeType(boundComponent, 'jnt:query'))}">
+<c:if test="${not empty boundComponent and (jcr:isNodeType(boundComponent, 'jmix:list') or jcr:isNodeType(boundComponent, 'jnt:query')) and not renderContext.editMode}">
 
     <%-- Now, we start the pager to show the initial number of elements (news, images, etc) some variables might not be needed --%>
     <c:set var="pagesizeid" value="pagesize${boundComponent.identifier}"/>
