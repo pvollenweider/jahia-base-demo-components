@@ -17,3 +17,7 @@
 <c:set target="${moduleMap}" property="emptyListMessage"><fmt:message key="label.noContactFound"/></c:set>
 <c:set target="${moduleMap}" property="listQuery" value="${listQuery}"/>
 <c:set target="${moduleMap}" property="subNodesView" value="${currentNode.properties['j:subNodesView'].string}"/>
+
+<c:if test="${not renderContext.liveMode}">
+    <fmt:message key="jdnt_investorContactList.liveModeOnly"/>
+</c:if>
