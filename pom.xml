@@ -64,8 +64,15 @@
     <url>scm:git:git@github.com:Jahia/dx-base-demo-components.git</url>
   </scm>
   <properties>
-    <jahia-depends>default,dx-base-demo-templates</jahia-depends>
+    <jahia-depends>default,dx-base-demo-core</jahia-depends>
   </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.jahia.modules</groupId>
+      <artifactId>dx-base-demo-core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
   <repositories>
     <repository>
       <releases>
