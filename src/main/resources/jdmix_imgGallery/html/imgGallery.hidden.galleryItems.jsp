@@ -21,5 +21,5 @@
 <c:set var="galleryImgs" value="${currentNode.properties['galleryImg']}"/>
 
 <c:forEach var="galleryImg" items="${galleryImgs}" varStatus="status">
-    <template:module node="${galleryImg.node}" view="hidden.galleryItems" editable="false"/>
+    <template:module path="${galleryImg.node.path}" view="hidden.galleryItems" editable="false"/>
 </c:forEach>

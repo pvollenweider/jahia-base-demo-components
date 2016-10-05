@@ -13,13 +13,12 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <c:set var="image" value="${currentNode.properties['videoPoster'].node}"/>
-<template:module node='${image}' editable='false' view='hidden.contentURL' var="imageUrl"/>
+<template:module path='${image.path}' editable='false' view='hidden.contentURL' var="imageUrl"/>
 
 <c:set var="caption" value="${currentNode.properties['jcr:title'].string}"/>
 
 <c:set var="itemWidth" value="${currentNode.parent.properties['itemWidth'].string}"/>
-<template:module node='${currentNode.properties.video.node}' editable='false' view='hidden.contentURL' var="videoURL"/>
-
+<template:module path='${currentNode.properties.video.node.path}' editable='false' view='hidden.contentURL' var="videoURL"/>
 <galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
 <c:choose>
     <c:when test="${renderContext.editMode}">

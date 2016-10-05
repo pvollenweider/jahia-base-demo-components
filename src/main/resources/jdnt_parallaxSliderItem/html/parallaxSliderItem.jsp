@@ -21,7 +21,7 @@
 
 <c:set var="backgroundImg" value="${currentNode.properties['backgroundImg'].node}"/>
 <c:if test="${not empty backgroundImg}">
-    <template:module node='${backgroundImg}' editable='false' view='hidden.contentURL' var="backgroundImgUrl"/>
+    <template:module path='${backgroundImg.path}' editable='false' view='hidden.contentURL' var="backgroundImgUrl"/>
 </c:if>
 <c:set var="pause" value="${currentNode.properties['pause'].boolean}"/>
 <c:set var="width" value="${currentNode.properties['width'].string}"/>
