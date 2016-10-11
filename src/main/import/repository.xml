@@ -16,7 +16,6 @@
                     <files jcr:primaryType="jnt:folder"/>
                     <contents jcr:primaryType="jnt:contentFolder"/>
                     <company-content-template j:applyOn="jdnt:company"
-                    <company-content-template j:applyOn="jdnt:company"
                                       j:defaultTemplate="true"
                                       j:hiddenTemplate="true"
                                       j:priority="30"
