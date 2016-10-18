@@ -108,13 +108,16 @@ public class StockWidgetFilter extends AbstractFilter {
             LOGGER.debug("Start request : " + url);
             final GetMethod httpMethod = new GetMethod(url.toString());
             try {
-                httpClient.getParams().setSoTimeout(15000);
+                httpClient.getParams().setSoTimeout(1000);
                 httpClient.executeMethod(httpMethod);
                 return new JSONObject(httpMethod.getResponseBodyAsString());
             } finally {
                 httpMethod.releaseConnection();
                 LOGGER.debug("Request " + url + " done in " + (System.currentTimeMillis() - l) + "ms");
             }
+        } catch (java.net.SocketTimeoutException te) {
+            LOGGER.warn("Timeout Exception on request to Google Finance API");
+            return null;
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             return null;
