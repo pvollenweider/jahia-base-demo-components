@@ -7,8 +7,6 @@
 <mix = 'http://www.jcp.org/jcr/mix/1.0'>
 
 
-[jdmix:jahiademo] > jmix:droppableContent, jmix:editorialContent mixin
-
 [jdnt:sliderPanel] > jnt:content, mix:title
  - jcr:title (string) internationalized
  - textColor (string, choicelist[resourceBundle]) = 'light' autocreated < 'light', 'dark'
