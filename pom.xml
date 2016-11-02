@@ -44,35 +44,27 @@
         please contact the sales department at sales@jahia.com.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-modules</artifactId>
     <version>7.1.2.0</version>
   </parent>
-  <groupId>org.jahia.modules</groupId>
   <artifactId>dx-base-demo-components</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>bundle</packaging>
-  <name>dx-base-demo-components</name>
+  <name>DX Base Demo Components</name>
   <description>This is the custom module (dx-base-demo-components) for running on a Digital Experience Manager server.</description>
   <scm>
     <connection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</connection>
     <developerConnection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</developerConnection>
     <url>scm:git:git@github.com:Jahia/dx-base-demo-components.git</url>
-    <tag>HEAD</tag>
   </scm>
   <properties>
-    <jahia-depends>default,dx-base-demo-core</jahia-depends>
+    <jahia-depends>default,dx-base-demo-core,bootstrap3-components,bootstrap3-core,calendar,event,facets,font-awesome,grid,jquery,location,news,person,press,rating,search,topstories</jahia-depends>
   </properties>
-  <dependencies>
-    <dependency>
-      <groupId>org.jahia.modules</groupId>
-      <artifactId>dx-base-demo-core</artifactId>
-      <version>1.1-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
   <repositories>
     <repository>
       <releases>
@@ -93,9 +85,6 @@
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
         <extensions>true</extensions>
-        <configuration>
-          <instructions />
-        </configuration>
       </plugin>
     </plugins>
   </build>
