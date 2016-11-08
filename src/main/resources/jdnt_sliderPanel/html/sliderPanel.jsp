@@ -17,106 +17,26 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-
-<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
-<c:set var="subtitle" value="${currentNode.properties.subtitle.string}"/>
-<c:set var="summary" value="${currentNode.properties.body.string}"/>
-<c:set var="textColor" value="${currentNode.properties.textColor.string}"/>
-<c:set var="link" value="${currentNode.properties.internalLink.node}"/>
-<c:set var="linkText" value="${currentNode.properties.linkText.string}"/>
-<c:set var="background" value="${currentNode.properties.backgroundImg.node}"/>
-<c:set var="image" value="${currentNode.properties.smallPhoto.node}"/>
-
-<%-- If a color theme was not selected use light --%>
-<c:if test="${empty textColor}"><c:set var="textColor" value="light"/></c:if>
-
-<%-- if linkText is not filled in use default Read More from resource file --%>
-<c:if test="${empty linkText}">
-    <c:set var="linkText"><fmt:message key="jdnt_sliderPanel.readMore"/></c:set>
-</c:if>
-
-<%-- get the background image, if none provided use default background.jpg image --%>
 <c:choose>
-    <c:when test="${empty background}">
-        <c:url var="backgroundUrl" value="${url.currentModule}/img/background.jpg"/>
+    <c:when test="${jcr:isNodeType(currentNode.parent, 'jdnt:slider')}">
+        <template:include view="hidden.content"/>
+    </c:when>
+    <c:when test="${!jcr:isNodeType(currentNode.parent, 'jdnt:slider') and renderContext.editMode}">
+        <%-- In the case of jdnt:demoBanner in edit mode --%>
+        <template:include view="edit"/>
     </c:when>
     <c:otherwise>
-        <template:module path='${background.path}' editable='false' view='hidden.contentURL' var="backgroundUrl"/>
-    </c:otherwise>
-</c:choose>
-
-<%-- get pixel layout for text and image --%>
-<c:set var="layout" value="${currentNode.properties.layout.string}"/>
-<c:choose>
-    <c:when test="${layout == 'right'}">
-        <c:set var="textLayout" value="450px"/>
-        <c:set var="photoLayout" value="15px"/>
-    </c:when>
-    <c:otherwise>
-        <c:set var="textLayout" value="15px"/>
-        <c:set var="photoLayout" value="550px"/>
-    </c:otherwise>
-</c:choose>
-
-<div class="ms-slide" style="z-index: 10">
-    <%-- loading image, this is a part of the original templates --%>
-    <img src="<c:url value="${url.currentModule}/img/blank.gif"/>" data-src="${backgroundUrl}" alt=""/>
-
-    <%-- if a small photo was provided display it --%>
-    <c:if test="${not empty image}">
-        <template:module path='${image.path}' editable='false' view='hidden.contentURL' var="imageUrl"/>
-        <div class="ms-layer sidePanelPhoto"
-             style="left: ${photoLayout};">
-            <img src="${imageUrl}" alt=""/>
+        <%-- In the case of jdnt:demoBanner in preview/live mode--%>
+        <template:addResources type="css" resources="masterslider/style/masterslider.css"/>
+        <template:addResources type="css" resources="masterslider/skins/black-2/style.css"/>
+        <template:addResources type="javascript" resources="masterslider/masterslider.min.js"/>
+        <template:addResources type="javascript" resources="masterslider/jquery.easing.min.js"/>
+        <template:addResources type="javascript" resources="master-slider-fw.js"/>
+        <template:addResources type="javascript" resources="custom/slider.js"/>
+        <div class="ms-layers-template">
+            <div class="master-slider ms-skin-black-2 round-skin master-slider-jahia" id="masterslider${currentNode.identifier}" transition="flow" autoplay="false" panelcount="1">
+                <template:include view="hidden.content"/>
+            </div>
         </div>
-    </c:if>
-
-    <%-- if a subtitle is provided display it --%>
-    <c:if test="${not empty subtitle}">
-        <div class="ms-layer ms-promo-subtitle top160 color-${textColor}" style="left:${textLayout};"
-             data-effect="bottom(40)"
-             data-duration="2000"
-             data-delay="700"
-             data-ease="easeOutExpo"
-        >${subtitle}</div>
-    </c:if>
-
-    <%-- if a title is provided display it --%>
-    <c:if test="${not empty title}">
-        <div class="ms-layer ms-promo-info-in ms-promo-info top210 color-${textColor}" style="left:${textLayout};"
-             data-effect="bottom(40)"
-             data-duration="2000"
-             data-delay="1000"
-             data-ease="easeOutExpo"
-        ><span class="color-theme">${title}</span></div>
-    </c:if>
-
-    <%-- if a summary is provided display it --%>
-    <c:if test="${not empty summary}">
-        <div class="ms-layer ms-promo-sub top310 color-${textColor}" style="left:${textLayout};"
-             data-effect="bottom(40)"
-             data-duration="2000"
-             data-delay="1300"
-             data-ease="easeOutExpo"
-        >${summary}</div>
-    </c:if>
-
-
-    <%-- if a link has been provided display it as a button --%>
-    <c:if test="${not empty link}">
-        <a class="ms-layer btn-u top390" style="left:${textLayout}" href="<template:module node="${link}" view="hidden.contentURL"/>"
-           data-effect="bottom(40)"
-           data-duration="2000"
-           data-delay="1300"
-           data-ease="easeOutExpo"
-           alt="${title}"
-        >${linkText}</a>
-    </c:if>
-
-    <c:if test="${jcr:isNodeType(currentNode, 'jdmix:videoSlider')}">
-        <template:include view="backgroundVideo" />
-    </c:if>
-</div>
-
-
-
+    </c:otherwise>
+</c:choose>

@@ -18,6 +18,8 @@
  - smallPhoto (weakreference, picker[type='image']) < 'jmix:image'
  - layout (string, choicelist[resourceBundle]) < 'left', 'right'
 
+[jdnt:demoBanner] > jdnt:sliderPanel, jdmix:jahiademo
+
 // jmix:list provides additional default views to preload and display a list of items
 // orderable allows you to reorder the content items of your component
 
