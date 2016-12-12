@@ -6,6 +6,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="query" uri="http://www.jahia.org/tags/queryLib" %>
 
+<%-- Flush cache every time a new contact is created under a contact form --%>
+<c:set var="contactForms"
+       value="select * from [jdnt:investorContactForm] as contactForms
+       where ISDESCENDANTNODE(contactForms,'${renderContext.mainResource.node.resolveSite.path}')
+       order by contactForms.[jcr:created] desc"/>
+<jcr:jqom var="result" statement="${contactForms}"/>
+<c:forEach items="${result.nodes}" var="contactForm">
+    <template:addCacheDependency flushOnPathMatchingRegexp="${contactForm.path}/.*"/>
+</c:forEach>
+
+
 <jcr:nodeProperty node="${currentNode}" name="maxItems" var="maxItems"/>
 <c:set var="lastinvestorContact"
        value="select * from [jdnt:investorContact] as investorContact

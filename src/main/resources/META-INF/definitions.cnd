@@ -120,7 +120,7 @@
  - agree (boolean)
 
 [jdmix:internalLink] mixin
- extends = jnt:topStories, jnt:banner
+ extends = jnt:banner
  - linkTitle (string) internationalized
  - internalLink (weakreference, picker[type='editoriallink']) < jmix:droppableContent, jnt:page, jnt:contentFolder, jnt:folder
 
