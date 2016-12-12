@@ -161,7 +161,7 @@ public class StockWidgetFilter extends AbstractFilter {
                            final String value,
                            final String variation,
                            final String description) throws RepositoryException {
-        JCRTemplate.getInstance().doExecuteWithSystemSessionAsUser(null, resource.getNode().getSession().getWorkspace().getName(), null,
+        JCRTemplate.getInstance().doExecuteWithSystemSessionAsUser(null, "live", null,
                 new JCRCallback<Object>() {
                     public Object doInJCR(final JCRSessionWrapper session) throws RepositoryException {
                         final JCRNodeWrapper stockwidgetNode = session.getNode(resource.getNode().getPath());
