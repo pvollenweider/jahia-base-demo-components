@@ -18,8 +18,6 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="currentAliasUser" type="org.jahia.services.usermanager.JahiaUser"--%>
-<template:addResources type="javascript" resources="plugins/counter/waypoints.min.js"/>
-<template:addResources type="javascript" resources="plugins/counter/jquery.counterup.min.js"/>
 <template:addResources type="javascript" resources="plugins/flip/jquery.flip.js"/>
 <template:addResources type="javascript" resources="custom/widget.js"/>
 
@@ -54,7 +52,7 @@
         </div>
         <div class="stock-price">
             <span class="currency-value"></span>
-            <span class="<c:if test="${not renderContext.editMode}">counter</c:if> stockvalue">${requestScope.stockValue}</span>
+            <span class="stockvalue">${requestScope.stockValue}</span>
         </div>
         <div class="stock-variable">
             <c:choose>
