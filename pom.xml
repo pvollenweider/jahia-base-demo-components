@@ -44,8 +44,7 @@
         please contact the sales department at sales@jahia.com.
 
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jahia.modules</groupId>
@@ -53,7 +52,7 @@
     <version>7.1.2.0</version>
   </parent>
   <artifactId>dx-base-demo-components</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <packaging>bundle</packaging>
   <name>DX Base Demo Components</name>
   <description>This is the custom module (dx-base-demo-components) for running on a Digital Experience Manager server.</description>
@@ -61,6 +60,7 @@
     <connection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</connection>
     <developerConnection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</developerConnection>
     <url>scm:git:git@github.com:Jahia/dx-base-demo-components.git</url>
+    <tag>1_0_1</tag>
   </scm>
   <properties>
     <jahia-depends>default,dx-base-demo-core,bootstrap3-components,bootstrap3-core,calendar,event,facets,font-awesome,grid,jquery,location,news,person,press,rating,search,topstories</jahia-depends>
