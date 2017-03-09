@@ -51,6 +51,7 @@ import org.jahia.services.content.JCRCallback;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.JCRSessionWrapper;
 import org.jahia.services.content.JCRTemplate;
+import org.jahia.services.notification.HttpClientService;
 import org.jahia.services.render.RenderContext;
 import org.jahia.services.render.Resource;
 import org.jahia.services.render.filter.AbstractFilter;
@@ -71,6 +72,8 @@ public class StockWidgetFilter extends AbstractFilter {
     private static final String PROPERTY_DESCRIPTION = "description";
     private static String API_URL = "finance.google.com";
     private static String API_path = "/finance/info";
+
+    private HttpClientService httpClientService;
 
     /**
      *
@@ -120,7 +123,7 @@ public class StockWidgetFilter extends AbstractFilter {
     private JSONObject queryGoogleFinanceAPI(final String path,
                                              final String... params) throws RepositoryException {
         try {
-            final HttpClient httpClient = new HttpClient();
+            final HttpClient httpClient = httpClientService.getHttpClient();
             final HttpURL url = new HttpURL(API_URL, -1, path);
 
             final Map<String, String> m = new LinkedHashMap<String, String>();
@@ -133,7 +136,7 @@ public class StockWidgetFilter extends AbstractFilter {
             LOGGER.debug("Start request : " + url);
             final GetMethod httpMethod = new GetMethod(url.toString());
             try {
-                httpClient.getParams().setSoTimeout(1000);
+                httpMethod.getParams().setSoTimeout(1000);
                 httpClient.executeMethod(httpMethod);
                 return new JSONObject(httpMethod.getResponseBodyAsString());
             } finally {
@@ -191,4 +194,13 @@ public class StockWidgetFilter extends AbstractFilter {
         }
     }
 
+    /**
+     * Injects an instance of the {@link HttpClientService}.
+     * 
+     * @param httpClientService
+     *            an instance of the service
+     */
+    public void setHttpClientService(HttpClientService httpClientService) {
+        this.httpClientService = httpClientService;
+    }
 }
