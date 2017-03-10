@@ -122,7 +122,7 @@ public class StockWidgetFilter extends AbstractFilter {
     private JSONObject queryGoogleFinanceAPI(final String path,
                                              final String... params) throws RepositoryException {
         try {
-            final HttpClient httpClient = httpClientService.getHttpClient();
+            final HttpClient httpClient = httpClientService.getHttpClient(API_URL);
             final HttpURL url = new HttpURL(API_URL, -1, path);
 
             final Map<String, String> m = new LinkedHashMap<String, String>();
