@@ -47,7 +47,7 @@
                     |
                     <c:forEach items="${options}" var="option" varStatus="items">
                         <div data-filter=".${option.value.string}" class="cbp-filter-item">
-                            <fmt:message key="jdnt_company.industryCat.${option.value.string}"/>
+                                ${option.displayName}
                         </div>
                         <c:if test="${not items.last}"> |</c:if>
                     </c:forEach>
