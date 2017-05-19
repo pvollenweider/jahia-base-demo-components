@@ -52,7 +52,7 @@
     <version>7.1.2.3</version>
   </parent>
   <artifactId>dx-base-demo-components</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>DX Base Demo Components</name>
   <description>This is the custom module (dx-base-demo-components) for running on a Digital Experience Manager server.</description>
@@ -60,7 +60,7 @@
     <connection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</connection>
     <developerConnection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</developerConnection>
     <url>scm:git:git@github.com:Jahia/dx-base-demo-components.git</url>
-    <tag>1_0_3</tag>
+    <tag>HEAD</tag>
   </scm>
   <properties>
     <jahia-depends>default,dx-base-demo-core,bootstrap3-components,bootstrap3-core,calendar,event,facets,font-awesome,grid,jquery,location,news,person,press,rating,search,topstories</jahia-depends>
