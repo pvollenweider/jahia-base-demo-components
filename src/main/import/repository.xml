@@ -26,10 +26,10 @@
                                  jcr:title="company content template"/>
                         <pagecontent jcr:primaryType="jnt:contentList">
                             <area columnsType="predefinedColumns"
-                                                 grid="9_3"
-                                                 gridLayout="full-width"
-                                                 jcr:mixinTypes="bootstrap3mix:createContainer bootstrap3mix:createRow bootstrap3mix:predefinedColumns"
-                                                 jcr:primaryType="bootstrap3nt:columns">
+                        grid="9_3"
+                        gridLayout="full-width"
+                        jcr:mixinTypes="bootstrap3mix:createContainer bootstrap3mix:createRow bootstrap3mix:predefinedColumns"
+                        jcr:primaryType="bootstrap3nt:columns">
                                 <area-main jcr:primaryType="jnt:contentList">
                                     <main-resource-display j:mainResourceView="body" jcr:primaryType="jnt:mainResourceDisplay"/>
                                     <companynews jcr:primaryType="jdnt:companyNews" limit="3">

@@ -20,6 +20,7 @@
 <%--@elvariable id="currentAliasUser" type="org.jahia.services.usermanager.JahiaUser"--%>
 <template:addResources type="javascript" resources="plugins/flip/jquery.flip.js"/>
 <template:addResources type="javascript" resources="custom/widget.js"/>
+<template:addResources type="css" resources="stockWidget/stockWidget.css" />
 
 
 <c:set var="uuid" value="${currentNode.identifier}"/>
@@ -76,7 +77,7 @@
         <i class="fa fa-area-chart" title="<fmt:message key="jdnt_stockWidget.flipToChart"/>"></i>
     </div>
     <div class="back">
-        <img src="https://www.google.com/finance/getchart?q=${stock}&i=${interval}&p=${period}<c:if test="${not empty exchange}">&x=${exchange}</c:if> ">
+        <img src="https://finance.google.com/finance/getchart?q=${stock}&i=${interval}&p=${period}<c:if test="${not empty exchange}">&x=${exchange}</c:if> ">
         <i class="fa fa-rotate-left" title="<fmt:message key="jdnt_stockWidget.flipToPrice"/>"></i>
     </div>
 </div>

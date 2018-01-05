@@ -70,7 +70,7 @@ public class StockWidgetFilter extends AbstractFilter {
     private static final String PROPERTY_VARIATION = "variation";
     private static final String PROPERTY_DESCRIPTION = "description";
     private static String API_URL = "finance.google.com";
-    private static String API_path = "/finance/info";
+    private static String API_path = "/finance";
 
     private HttpClientService httpClientService;
 
@@ -86,7 +86,8 @@ public class StockWidgetFilter extends AbstractFilter {
     public String prepare(final RenderContext renderContext,
                           final Resource resource,
                           final RenderChain chain) throws Exception {
-        final JSONObject stock = queryGoogleFinanceAPI(API_path, "client", "ig", "q", getStockProperty(resource, "stock"));
+        final JSONObject stock = queryGoogleFinanceAPI(API_path, "client", "ig",
+                "q", getStockProperty(resource, "stock"), "output", "json");
         final String stockValue;
         final String stockVariation;
         final String stockDescription;
@@ -166,11 +167,15 @@ public class StockWidgetFilter extends AbstractFilter {
         JCRTemplate.getInstance().doExecuteWithSystemSessionAsUser(null, "live", null,
                 new JCRCallback<Object>() {
                     public Object doInJCR(final JCRSessionWrapper session) throws RepositoryException {
-                        final JCRNodeWrapper stockwidgetNode = session.getNode(resource.getNode().getPath());
-                        stockwidgetNode.setProperty(PROPERTY_VALUE, value);
-                        stockwidgetNode.setProperty(PROPERTY_VARIATION, variation);
-                        stockwidgetNode.setProperty(PROPERTY_DESCRIPTION, description);
-                        stockwidgetNode.saveSession();
+                        String currentNodePath = resource.getNode().getPath();
+                        if(session.nodeExists(currentNodePath)) {
+                            final JCRNodeWrapper stockWidgetNode = session.getNode(currentNodePath);
+                            stockWidgetNode.setProperty(PROPERTY_VALUE, value);
+                            stockWidgetNode.setProperty(PROPERTY_VARIATION, variation);
+                            stockWidgetNode.setProperty(PROPERTY_DESCRIPTION, description);
+                            stockWidgetNode.saveSession();
+                        }
+
                         return null;
                     }
                 });
