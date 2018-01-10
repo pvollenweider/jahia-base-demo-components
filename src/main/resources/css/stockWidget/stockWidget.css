@@ -1,10 +1,39 @@
-.card {
-    height: 342px;
+.stock-widget {
+    margin-top: 20px;
+    height: 180px;
 }
 
 .card img {
-    height: 100%;
-    width: initial;
     display: block;
     margin: auto;
+    width: initial;
+}
+
+.card i {
+    float: initial;
+}
+
+.flipToChart {
+    display: block;
+}
+
+#graphModal img {
+    display: block;
+    margin: auto;
+    height: 342px;
+}
+
+.modal-body img {
+    display: block;
+    margin: auto;
+}
+
+.alert {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.95;
+    z-index: 2;
+    width: 100%
 }
