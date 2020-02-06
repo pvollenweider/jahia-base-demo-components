@@ -43,7 +43,7 @@
            data-type="video"
            data-video='<div class="pswp_wrapper"><div class="pswp_video-wrapper"><iframe class="pswp__video" width="960" height="640" src="${videoURL}" frameborder="0" allowfullscreen></iframe></div></div>'
         >
-            <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px" class="img-responsive">
+            <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px" class="img-fluid">
             <br/>
         </a>
         <figcaption itemprop="caption description">${caption}</figcaption>

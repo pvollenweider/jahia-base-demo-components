@@ -29,7 +29,7 @@
         <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
         <div class="timeline-panel">
             <div class="timeline-heading">
-                <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+                <img class="img-fluid" src="${url.currentModule}/img/background.jpg" alt="">
             </div>
             <div class="timeline-body text-justify">
                 <h2><a href="javascript:void(0)"><fmt:message key="jdnt_timeline.placeholderTitle"/></a></h2>
@@ -49,7 +49,7 @@
         <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
         <div class="timeline-panel">
             <div class="timeline-heading">
-                <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+                <img class="img-fluid" src="${url.currentModule}/img/background.jpg" alt="">
             </div>
             <div class="timeline-body text-justify">
                 <h2><a href="javascript:void(0)"><fmt:message key="jdnt_timeline.placeholderTitle"/></a></h2>

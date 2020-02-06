@@ -21,6 +21,6 @@
 
 <div class="owl-item owl-fix-width">
     <div class="item">
-        <img class="img-responsive" src="${imgURL}" alt=""/>
+        <img class="img-fluid" src="${imgURL}" alt=""/>
     </div>
 </div>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
     <modules jcr:primaryType="jnt:modules">
-        <dx-base-demo-components j:dependencies="default dx-base-demo-core bootstrap3-components bootstrap3-core calendar event facets font-awesome grid jquery location news person press rating search topstories"
+        <dx-base-demo-components j:dependencies="default dx-base-demo-core bootstrap4-components bootstrap4-core calendar event facets font-awesome grid jquery location news person press rating search topstories"
                                j:modulePriority="0"
                                j:moduleType="module"
                                j:title="DX Base Demo Components"
                                jcr:primaryType="jnt:module">
-                
+
                 <portlets jcr:primaryType="jnt:portletFolder"/>
                 <files jcr:primaryType="jnt:folder"/>
                 <contents jcr:primaryType="jnt:contentFolder"/>
@@ -25,11 +25,13 @@
                                  jcr:primaryType="jnt:translation"
                                  jcr:title="company content template"/>
                         <pagecontent jcr:primaryType="jnt:contentList">
-                            <area columnsType="predefinedColumns"
-                        grid="9_3"
-                        gridLayout="full-width"
-                        jcr:mixinTypes="bootstrap3mix:createContainer bootstrap3mix:createRow bootstrap3mix:predefinedColumns"
-                        jcr:primaryType="bootstrap3nt:columns">
+                            <area grid="9_3"
+                                  gridLayout="fixed-width"
+                                  jcr:mixinTypes="bootstrap4mix:createContainer bootstrap4mix:createRow bootstrap4mix:predefinedGrid"
+                                  jcr:primaryType="bootstrap4nt:grid"
+                                  rowHorizontalAlignment="default"
+                                  rowVerticalAlignment="default"
+                                  typeOfGrid="predefinedGrid">
                                 <area-main jcr:primaryType="jnt:contentList">
                                     <main-resource-display j:mainResourceView="body" jcr:primaryType="jnt:mainResourceDisplay"/>
                                     <companynews jcr:primaryType="jdnt:companyNews" limit="3">
@@ -61,7 +63,7 @@
                         </landing>
                     </company-content-template>
                 </templates>
-                
+
             </dx-base-demo-components>
     </modules>
 </content>

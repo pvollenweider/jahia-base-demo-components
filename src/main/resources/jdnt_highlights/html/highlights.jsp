@@ -141,7 +141,7 @@
                 <div class="thumbnails thumbnail-style thumbnail-kenburn">
                     <div class="thumbnail-img">
                         <div class="overflow-hidden">
-                            <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+                            <img class="img-fluid" src="${url.currentModule}/img/background.jpg" alt="">
                         </div>
                         <a class="btn-more hover-effect" href="#" alt=""><fmt:message key="jdnt_highlight.readmore"/> +</a>
                     </div>

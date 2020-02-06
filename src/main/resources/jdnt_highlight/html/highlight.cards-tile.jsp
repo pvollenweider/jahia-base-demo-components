@@ -42,7 +42,7 @@ and not empty currentNode.properties['internalLink'].node}">
     <c:if test="${not empty linkNode}">
         <a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>" alt="${title}">
     </c:if>
-            <img class="img-responsive" src="${imageUrl}" alt="">
+            <img class="img-fluid" src="${imageUrl}" alt="">
         <%-- only display the read more text if a link has been provided --%>
     <c:if test="${not empty linkNode}">
         </a>

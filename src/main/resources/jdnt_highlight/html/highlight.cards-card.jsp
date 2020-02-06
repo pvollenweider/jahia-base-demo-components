@@ -45,7 +45,7 @@ and not empty currentNode.properties['internalLink'].node}">
 <div class="${griditem} thumbnails thumbnail-style thumbnail-kenburn">
     <div class="thumbnail-img">
         <div class="overflow-hidden">
-            <img class="img-responsive" src="${imageUrl}" alt="">
+            <img class="img-fluid" src="${imageUrl}" alt="">
         </div>
         <%-- only display the read more text if a link has been provided --%>
         <c:if test="${not empty linkNode}">

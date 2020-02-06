@@ -47,7 +47,7 @@ and not empty currentNode.properties['internalLink'].node}">
 <div class="${griditem} thumbnails thumbnail-style ${flipClass} flip-container">
     <div class="flipper">
         <div class="front">
-            <img class="img-responsive" src="${imageUrl}" alt="">
+            <img class="img-fluid" src="${imageUrl}" alt="">
         </div>
         <div class="back">
             <div class="caption">

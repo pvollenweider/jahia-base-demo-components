@@ -77,7 +77,7 @@ and not empty currentNode.properties['internalLink'].node}">
             <%-- schemas for image objects, great for SEO and microformats --%>
             <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                 <a href="${imageUrl}" class="image" itemprop="contentUrl" data-size="1000x667" >
-                    <img src="${imageUrl}" class="img-responsive"  height="400" width="600" itemprop="thumbnail">
+                    <img src="${imageUrl}" class="img-fluid"  height="400" width="600" itemprop="thumbnail">
                 </a>
            </figure>
         </div>

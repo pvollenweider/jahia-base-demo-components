@@ -46,7 +46,7 @@
                 <div class="item active">
                     <div class="owl-item owl-fix-width">
                         <div class="item">
-                            <img class="img-responsive" src="${url.currentModule}/img/background.jpg"
+                            <img class="img-fluid" src="${url.currentModule}/img/background.jpg"
                                  alt="placeholder"/>
                         </div>
                     </div>

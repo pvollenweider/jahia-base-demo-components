@@ -32,7 +32,7 @@
             <h2><fmt:message key="jdnt_timeline.placeholderTitle"/></h2>
             <div class="row">
                 <div class="col-md-4">
-                    <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+                    <img class="img-fluid" src="${url.currentModule}/img/background.jpg" alt="">
 
                     <div class="md-margin-bottom-20"></div>
                 </div>
@@ -51,7 +51,7 @@
             <h2>Add A News Article</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <img class="img-responsive" src="${url.currentModule}/img/background.jpg" alt="">
+                    <img class="img-fluid" src="${url.currentModule}/img/background.jpg" alt="">
                     <div class="md-margin-bottom-20"></div>
                 </div>
                 <div class="col-md-8">

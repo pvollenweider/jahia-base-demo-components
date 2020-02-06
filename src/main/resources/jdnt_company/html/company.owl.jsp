@@ -27,6 +27,6 @@
 
 <div class="item" style="width: 163px;">
     <a href="${compUrl}">
-        <img class="img-responsive" src="${imageUrl}" alt=""/>
+        <img class="img-fluid" src="${imageUrl}" alt=""/>
     </a>
 </div>
