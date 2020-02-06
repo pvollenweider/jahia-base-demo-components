@@ -27,15 +27,15 @@
 <!-- Contact Social Icons -->
 <ul class="list-inline who">
     <c:if test="${not empty facebook and facebook != 'http://'}">
-        <li><a href="${facebook}"><i class="fa fa-facebook-official"></i></a></li>
+        <li class="list-inline-item"><a href="${facebook}"><i class="fa fa-facebook-official"></i></a></li>
     </c:if>
     <c:if test="${not empty twitter and twitter != 'http://'}">
-        <li><a href="${twitter}"><i class="fa fa-twitter-square"></i></a></li>
+        <li class="list-inline-item"><a href="${twitter}"><i class="fa fa-twitter-square"></i></a></li>
     </c:if>
     <c:if test="${not empty googlePlus and googlePlus != 'http://'}">
-        <li><a href="${googlePlus}"><i class="fa fa-google-plus-square"></i></a></li>
+        <li class="list-inline-item"><a href="${googlePlus}"><i class="fa fa-google-plus-square"></i></a></li>
     </c:if>
     <c:if test="${not empty linkedin and linkedin != 'http://'}">
-        <li><a href="${linkedin}"><i class="fa fa-linkedin-square"></i></a></li>
+        <li class="list-inline-item"><a href="${linkedin}"><i class="fa fa-linkedin-square"></i></a></li>
     </c:if>
 </ul>
