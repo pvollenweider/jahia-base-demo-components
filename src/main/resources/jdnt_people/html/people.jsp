@@ -54,15 +54,15 @@
                 <p><fmt:message key="jdnt_people.sampleBio"/></p>
                 <p><fmt:message key="jdnt_people.sampleBio2"/></p>
                 <ul class="list-inline team-social">
-                    <li><a data-placement="top" data-toggle="tooltip" class="fb tooltips" data-original-title="Facebook"
+                    <li class="list-inline-item"><a data-placement="top" data-toggle="tooltip" class="fb tooltips" data-original-title="Facebook"
                            href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a data-placement="top" data-toggle="tooltip" class="tw tooltips" data-original-title="Twitter"
+                    <li class="list-inline-item"><a data-placement="top" data-toggle="tooltip" class="tw tooltips" data-original-title="Twitter"
                            href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a data-placement="top" data-toggle="tooltip" class="gp tooltips"
+                    <li class="list-inline-item"><a data-placement="top" data-toggle="tooltip" class="gp tooltips"
                            data-original-title="Google plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a data-placement="top" data-toggle="tooltip" class="ln	tooltips"
+                    <li class="list-inline-item"><a data-placement="top" data-toggle="tooltip" class="ln	tooltips"
                            data-original-title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a data-placement="top" data-toggle="tooltip" class="vcard	tooltips"
+                    <li class="list-inline-item"><a data-placement="top" data-toggle="tooltip" class="vcard	tooltips"
                            data-original-title="Download vCard" href="#"><i class="fa fa-vcard"></i></a></li>
                 </ul>
             </div>
